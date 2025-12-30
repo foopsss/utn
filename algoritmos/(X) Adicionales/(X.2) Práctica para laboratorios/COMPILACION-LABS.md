@@ -1,44 +1,31 @@
 # Compilación de ejercicios
-Este documento explica como compilar los ejercicios que hice de las guías de preparación para los laboratorios de lenguajes.
+Este documento explica como compilar los ejercicios que hice de las guías de preparación para los laboratorios de lenguajes. Se asume que los compiladores a utilizar son [Free Pascal](https://es.wikipedia.org/wiki/Free_Pascal) y [GCC](https://es.wikipedia.org/wiki/GNU_Compiler_Collection) (provisto en Windows como parte de [MinGW](https://es.wikipedia.org/wiki/MinGW)), ya que son los recomendados por la cátedra.
 
-## Pascal
-Se asume para esta parte que el compilador utilizado es [Free Pascal](https://es.wikipedia.org/wiki/Free_Pascal), ya que es el que recomienda la cátedra.
+## Compilación manual de ejercicios
+* __Pascal__: los ejercicios pueden ser compilados tanto en Linux como en Windows con una simple invocación al compilador: `fpc <nombre del archivo>.pas`.
+* __C__: los ejercicios pueden ser compilados tanto en Linux como en Windows con una simple invocación al compilador: `gcc <nombre del archivo>.c -o <nombre del archivo>`.
 
-### Manual
-Los ejercicios pueden ser compilados tanto en Linux como en Windows con una simple invocación al compilador: `fpc <nombre del archivo>`.
+## Compilación utilizando lang.py
+```lang.py``` es un «pequeño» script multiplataforma de Python que sirve para automatizar la compilación y ejecución de los programas, así como la remoción de los ejecutables generados y cualquier otro archivo residual que pudiera llegar a quedar tras el proceso de compilación. Cuenta con los siguientes parámetros:
 
-### Con pas.sh (Linux)
-`pas.sh` es un pequeño script de Bash que facilita algunas acciones al trabajar con Pascal, como compilar y ejecutar los ejercicios. Cuenta con cinco parámetros que se le pueden pasar al ejecutarlo:
+* ```-c```/```--compile```: indica que solo se desea compilar un ejercicio dado.
+* ```-e```/```--execute```: indica que se desea compilar y ejecutar un ejercicio dado.
+* ```-r```/```--remove```: indica que se desean remover los archivos resultantes de la compilación de un ejercicio dado.
 
-1. **l** (location): permite especificar el directorio en el cual se va a realizar una acción.
-2. **c** (compile): permite especificar el nombre del archivo con el código a compilar.
-3. **g**: permite especificar el nombre del archivo con el código a compilar, con la diferencia de que el ejecutable resultante incluirá información de depuración y se abrirá en [GDB](https://es.wikipedia.org/wiki/GNU_Debugger).
-4. **r** (run): permite especificar el nombre del archivo con el código a compilar y ejecutar.
-5. **d** (delete): permite especificar el nombre del ejercicio cuyos archivos resultantes de la compilación se quieren borrar.
+Estos parámetros son excluyentes entre sí, lo que implica que solo se pueden usar individualmente y no en conjunto. Uno de ellos debe ser provisto obligatoriamente a la hora de ejecutar el script. 
 
-De esta forma, si quisiera compilar y ejecutar el ejercicio 1-1 de la carpeta G1, utilizaría el comando `./pas.sh -l G1 -r 1-1`. Luego, si quisiera borrar todos los archivos resultantes de compilar el ejercicio, utilizaría el comando `./pas.sh -l G1 -d 1-1`.
+En caso de usar los parámetros ```-c``` o ```-e``` también es posible incluir el parámetro ```-d```/```--debug```, con el cual se pueden producir ejecutables con símbolos de depuración. Si se indican los parámetros ```-e``` y ```-d```, el script ejecutará el programa indicado con GDB de forma automática.
 
-- **NOTA**: algunos ejercicios utilizan una librería (functions) que creé para abstraer algunas funciones comunes. Esa librería también es compilada al compilar un ejercicio que la utilice, y se pueden borrar los archivos resultantes de su compilación con el comando `./pas.sh -d functions`.
+El script puede ejecutarse de la siguiente forma:
 
-## C
-Se asume para esta parte que el compilador utilizado es [GCC](https://es.wikipedia.org/wiki/GNU_Compiler_Collection) (provisto en Windows como parte de [MinGW](https://es.wikipedia.org/wiki/MinGW)), ya que es el que recomienda la cátedra.
+```
+python lang.py <archivo a compilar> <parámetros>
+```
 
-### Manual
-Los ejercicios pueden ser compilados tanto en Linux como en Windows con una simple invocación al compilador: `gcc <nombre del archivo> -o <nombre del archivo>`.
+Entonces, si se quisiera compilar y ejecutar el programa 1-1.pas ubicado en «(X.2.1) Ejercicios de Pascal/G1» debería escribirse lo siguiente:
 
-### Con c.sh (Linux)
-`c.sh` es un pequeño script de Bash que facilita algunas acciones al trabajar con C, como compilar y ejecutar los ejercicios. Cuenta con seis parámetros que se le pueden pasar al ejecutarlo:
+```
+python lang.py 1-1.pas -e
+```
 
-1. **l** (location): permite especificar el directorio en el cual se va a realizar una acción.
-2. **p** (platform): permite especificar si se quiere compilar usando GCC o MinGW (también disponible en Linux), así como el archivo a ejecutar y/o borrar. Si la entrada es "mgw" se compila de forma cruzada/ejecuta/borra un ejecutable para Windows, y para Linux en cualquier otro caso (o si no se especifica).
-3. **c** (compile): permite especificar el nombre del archivo con el código a compilar.
-4. **g**: permite especificar el nombre del archivo con el código a compilar, con la diferencia de que el ejecutable resultante incluirá información de depuración y se abrirá en [GDB](https://es.wikipedia.org/wiki/GNU_Debugger) si se compila con GCC para Linux. En caso de usar la versión de MinGW de GCC, simplemente se compilará el código.
-5. **r** (run): permite especificar el nombre del archivo con el código a compilar y ejecutar.
-6. **d** (delete): permite especificar el nombre del ejercicio cuyo archivo resultante de la compilación se quiere borrar.
-
-De esta forma, si quisiera compilar y ejecutar el ejercicio 1-1 de la carpeta G1, utilizaría el comando `./c.sh -l G1 -r 1-1`. Luego, si quisiera borrar todos los archivos resultantes de compilar el ejercicio, utilizaría el comando `./c.sh -l G1 -d 1-1`.
-
-# Consideraciones a la hora de usar los scripts
-1. Los parámetros deben especificarse en el orden en el que los detallé arriba.
-2. No es necesario especificar la extensión de los archivos con el código a compilar/ejecutar, o aquellos que se quieren borrar.
-3. Los ejecutables compilados con información de depuración siempre van a llevar el sufijo "-dbg", para distinguirlos claramente de los normales. Se debe tomar esto en cuenta si se quiere usar los scripts para borrarlos luego.
+El script determina automáticamente la ubicación del programa a través de una búsqueda recursiva en el directorio actual y en posibles subdirectorios existentes. En caso de haber múltiples archivos con el mismo nombre el script le avisará al usuario para que tome las medidas correspondientes a fin de corregir esa situación.
