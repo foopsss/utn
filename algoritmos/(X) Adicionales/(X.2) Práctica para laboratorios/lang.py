@@ -11,7 +11,7 @@ from pathlib import Path
 # Cosas a utilizar en los métodos de los backends o durante la ejecución del
 # script.
 def draw_line() -> None:
-    line = "=" * 140
+    line = "=" * 100
     print(line)
 
 
@@ -176,25 +176,35 @@ if __name__ == "__main__":
     matches = list(cwd.rglob(args.file))
 
     if len(matches) == 0:
-        print("No se ha podido encontrar ningún archivo con el nombre")
-        print(" especificado.")
+        print(
+            "No se ha podido encontrar ningún archivo con el nombre"
+            " especificado."
+        )
         sys.exit(1)
     elif len(matches) > 1:
         print("Se ha encontrado más de un archivo con el nombre especificado.")
         print("Los archivos encontrados son:")
+        print("")
 
         for file in matches:
             match_path = str(file.absolute())
-            print(f"\n* {match_path}")
+            print(f"* {match_path}")
 
-        print("Por favor, renombre los archivos para eliminar la ambiguedad")
-        print(" existente y ejecute el script de nuevo.")
+        print("")
+        print(
+            "Por favor, renombre los archivos para eliminar la ambiguedad"
+            " existente y ejecute el script de nuevo."
+        )
         sys.exit(1)
 
     if len(matches[0].suffixes) > 1:
-        print("Se está trabajando con un archivo que tiene dos o más")
-        print(" extensiones. Todas las extensiones a excepción de la última")
-        print(" serán ignoradas.")
+        print(
+            "Se está trabajando con un archivo que tiene dos o más"
+            " extensiones."
+        )
+        print(
+            "Todas las extensiones a excepción de la última serán ignoradas."
+        )
         draw_line()
 
     # Creación de un objeto con los datos correspondientes al
@@ -216,8 +226,10 @@ if __name__ == "__main__":
             debug_build=is_debug_build,
         )
     else:
-        print("Se ha proporcionado un archivo que el script no sabe cómo")
-        print(" tratar. \nSaliendo...")
+        print(
+            "Se ha proporcionado un archivo que el script no sabe cómo"
+            " tratar."
+        )
         sys.exit(1)
 
     # Realización de acciones.
