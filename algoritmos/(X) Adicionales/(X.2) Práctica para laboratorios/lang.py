@@ -7,16 +7,11 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 
 
-# --- Funciones de apoyo ---
-# Cosas a utilizar en los métodos de los backends o durante la ejecución del
-# script.
 def draw_line() -> None:
     line = "=" * 100
     print(line)
 
 
-# --- Clases o backends ---
-# Definen el soporte para un determinado lenguaje.
 class AbstractBackend(ABC):
     def __init__(self, filename: str, path: str, debug_build: bool):
         self.filename = filename
@@ -106,7 +101,6 @@ class CBackend(AbstractBackend):
         subprocess.run(command, check=True, cwd=self.path)
 
 
-# --- Definición de parámetros del script y su funcionamiento ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Permite compilar y ejecutar código escrito en Pascal y"
@@ -121,9 +115,6 @@ if __name__ == "__main__":
         " del archivo.",
     )
 
-    # Modificadores de parámetros.
-    # Cambian el comportamiento de los parámetros de la siguiente sección
-    # en función de si están definidos o no.
     parser.add_argument(
         "-d",
         "--debug",
@@ -133,11 +124,7 @@ if __name__ == "__main__":
         " para depurarlo.",
     )
 
-    # Grupos de parámetros que se excluyen mutuamente.
-    # La idea es que uno solo pueda hacer una de estas acciones en un
-    # momento dado: compilar, ejecutar o remover archivos innecesarios.
     exclude_group = parser.add_mutually_exclusive_group(required=True)
-
     exclude_group.add_argument(
         "-c",
         "--compile",
@@ -163,7 +150,6 @@ if __name__ == "__main__":
         " como producto del proceso de compilación de un programa dado.",
     )
 
-    # Procesamiento de argumentos.
     args = parser.parse_args()
 
     if args.remove and args.debug:
@@ -207,8 +193,6 @@ if __name__ == "__main__":
         )
         draw_line()
 
-    # Creación de un objeto con los datos correspondientes al
-    # archivo de código fuente a tratar.
     filename_stem = matches[0].stem
     file_parent_path = str(matches[0].parent.absolute())
     is_debug_build = bool(args.debug)
@@ -232,7 +216,6 @@ if __name__ == "__main__":
         )
         sys.exit(1)
 
-    # Realización de acciones.
     if args.compile:
         lang_file.compile()
     elif args.execute:
