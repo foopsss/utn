@@ -11,4 +11,4 @@ indent_size = 4
 # desea insertar una línea vacía al final de un archivo.
 [*]
 end_of_line = lf
-insert_final_newline = false
+insert_final_newline = true
