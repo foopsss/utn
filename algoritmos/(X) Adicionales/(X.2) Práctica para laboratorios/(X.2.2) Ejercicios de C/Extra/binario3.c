@@ -2,8 +2,8 @@
 // permite calcular si se cumple el patrón de que el número esté compuesto por
 // una cantidad impar de 1.
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool cumple_patron(long int entrada, int cant_uno) {
     // Descomentar esto si se quiere ver

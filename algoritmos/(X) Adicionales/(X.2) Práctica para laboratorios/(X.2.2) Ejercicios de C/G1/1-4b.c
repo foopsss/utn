@@ -13,7 +13,8 @@ int main(void) {
     scanf("%d", &num_us);
 
     // También se podría acomodar la expresión de la siguiente forma:
-    // (num_us % 2 == 0) ? printf("El número es par.\n") : printf("El número NO es par.\n");
+    // (num_us % 2 == 0) ? printf("El número es par.\n") : printf("El número NO
+    // es par.\n");
     (num_us % 2 == 0) ? printf("El número es par.\n")
                       : printf("El número NO es par.\n");
 
