@@ -1,0 +1,14 @@
+# Definir este archivo como el archivo raíz o de nivel superior.
+# (Debido a que se podrían crear otros archivos como este en subdirectorios)
+root = true
+
+# Indentación de cuatro espacios.
+[*]
+indent_style = space
+indent_size = 4
+
+# Definir el carácter de fin de línea preferido (estilo Unix), así como si se
+# desea insertar una línea vacía al final de un archivo.
+[*]
+end_of_line = lf
+insert_final_newline = false
