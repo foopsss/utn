@@ -4,10 +4,12 @@ pantalla. */
 #include <stdio.h>
 
 int main(void) {
-    int arr_ent[10], i;
+    const size_t arr_size = 10;
+    size_t i;
+    int arr_ent[arr_size];
 
-    for (i = 0; i <= 9; i++) {
-        printf("Introduzca un número para la posición %d del arreglo: ", i);
+    for (i = 0; i < arr_size; i++) {
+        printf("Introduzca un número para la posición %zu del arreglo: ", i);
         scanf("%d", &arr_ent[i]);
     }
 
@@ -15,8 +17,8 @@ int main(void) {
     printf("Valores cargados\n");
     printf("================\n");
 
-    for (i = 0; i <= 9; i++) {
-        printf("Valor de la posición %d del arreglo: %d\n", i, arr_ent[i]);
+    for (i = 0; i < arr_size; i++) {
+        printf("Valor de la posición %zu del arreglo: %d\n", i, arr_ent[i]);
     }
 
     return 0;
