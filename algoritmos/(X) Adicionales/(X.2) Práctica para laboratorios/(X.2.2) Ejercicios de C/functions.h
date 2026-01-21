@@ -30,6 +30,26 @@ void cargar_arreglo_enteros(int* arr, size_t arr_size, int low_lim,
     }
 }
 
+void ordenar_arreglo_enteros(int* arr, size_t arr_size) {
+    if (arr_size < 2) {
+        // Los arreglos vacíos o de un elemento no
+        // necesitan ser ordenados.
+        return;
+    }
+
+    for (size_t i = 1; i < arr_size; i++) {
+        size_t ind_act = i;
+        int resguardo = arr[ind_act];
+
+        while (ind_act > 0 && arr[ind_act - 1] > resguardo) {
+            arr[ind_act] = arr[ind_act - 1];
+            ind_act--;
+        }
+
+        arr[ind_act] = resguardo;
+    }
+}
+
 void mostrar_arreglo_enteros(int* arr, size_t arr_size) {
     for (size_t i = 0; i < arr_size; i++) {
         printf("Valor de la posición %zu del arreglo: %d\n", i, arr[i]);
