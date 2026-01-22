@@ -28,6 +28,12 @@ void evaluar_resultado(int result) {
 int main(void) {
     const size_t arr_size = 10;
     const int low_lim = 0;
+    // Uso rangos distintos para generar los contenidos de los arreglos porque
+    // si utilizo el mismo rango para ambos obtengo exactamente los mismos
+    // valores.
+    // Probablemente tenga que ver con la manera en la que está implementada la
+    // función cargar_arreglo_enteros(), específicamente con el seeding o
+    // preparación del generador, algo que no es fácil de cambiar.
     const int prim_arr_upp_lim = 150;
     const int seg_arr_upp_lim = 200;
     int prim_arr[arr_size], seg_arr[arr_size], result;
