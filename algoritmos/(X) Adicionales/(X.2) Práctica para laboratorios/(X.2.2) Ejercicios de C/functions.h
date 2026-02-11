@@ -2,6 +2,8 @@
 // https://stackoverflow.com/questions/822323/how-to-generate-a-random-int-in-c
 // https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)Randomization.html
 // https://stackoverflow.com/questions/54202670
+// https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/rand-s?view=msvc-170
+// https://man7.org/linux/man-pages/man2/getrandom.2.html
 
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
@@ -9,24 +11,40 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+
+int get_random_number() {
+    int num;
+
+    // clang-format off
+    #ifdef _WIN32
+        #define _CRT_RAND_S
+        rand_s(&num);
+    #elif __linux__
+        #include <sys/random.h>
+        getrandom(&num, sizeof(num), 0);
+    #else
+        #include <time.h>
+        srand(time(NULL));
+        num = rand();
+    #endif
+    // clang-format on
+
+    return num;
+}
 
 void cargar_arreglo_enteros(int* arr, size_t arr_size, int low_lim,
                             int upp_lim) {
     assert(low_lim != upp_lim);
 
-    // Preparación (seeding) del generador de números aleatorios.
-    srand(time(NULL));
-
     for (size_t i = 0; i < arr_size; i++) {
         // Explicación de la fórmula utilizada:
         // 1. (upp_lim - low_lim + 1) determina la cantidad de números
         //    al azar que se pueden obtener.
-        // 2. rand() % (cant. posibles números) permite obtener un número
-        //    entre 0 y la cantidad de posibles números a obtener.
+        // 2. get_random_number() % (cant. posibles números) permite obtener
+        //    un número entre 0 y la cantidad de posibles números a obtener.
         // 3. Al resultado del módulo se le suma el valor del límite
         //    inferior para que por lo menos sea igual a dicho número.
-        arr[i] = (rand() % (upp_lim - low_lim + 1)) + low_lim;
+        arr[i] = (get_random_number() % (upp_lim - low_lim + 1)) + low_lim;
     }
 }
 
