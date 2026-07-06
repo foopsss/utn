@@ -14,8 +14,7 @@ void copiar_arreglo(int* empty_array, int* array_with_contents,
 
 int main(void) {
     const size_t arr_size = 10;
-    const int low_lim = 0;
-    const int upp_lim = 10;
+    const int low_lim = 0, upp_lim = 10;
     int arr_a[arr_size], arr_b[arr_size];
 
     cargar_arreglo_enteros(arr_a, arr_size, low_lim, upp_lim);

@@ -9,10 +9,9 @@ arreglo de forma aleatoria, con números que vayan del 1 al 100. */
 
 int main(void) {
     const size_t arr_size = 10;
-    const int low_lim = 1;
-    const int upp_lim = 100;
-
+    const int low_lim = 1, upp_lim = 100;
     int arr_ent[arr_size];
+
     cargar_arreglo_enteros(arr_ent, arr_size, low_lim, upp_lim);
     mostrar_arreglo_enteros(arr_ent, arr_size);
     return 0;

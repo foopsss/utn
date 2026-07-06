@@ -27,8 +27,7 @@ void evaluar_resultado(int result) {
 
 int main(void) {
     const size_t arr_size = 10;
-    const int low_lim = 0;
-    const int upp_lim = 100;
+    const int low_lim = 0, upp_lim = 100;
     int prim_arr[arr_size], seg_arr[arr_size], result;
 
     // Es posible que en plataformas distintas de Windows y Linux

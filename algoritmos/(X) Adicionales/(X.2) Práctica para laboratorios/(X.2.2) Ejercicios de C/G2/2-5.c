@@ -16,8 +16,7 @@ int sumar_elementos(int* arr, size_t arr_size) {
 
 int main(void) {
     const size_t arr_size = 10;
-    const int low_lim = 0;
-    const int upp_lim = 100;
+    const int low_lim = 0, upp_lim = 100;
     int arr_ent[arr_size], suma_elem;
 
     cargar_arreglo_enteros(arr_ent, arr_size, low_lim, upp_lim);
