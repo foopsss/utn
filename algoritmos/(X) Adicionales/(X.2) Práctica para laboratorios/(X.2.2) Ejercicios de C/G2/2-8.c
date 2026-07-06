@@ -45,10 +45,11 @@ int controlar_presencia_arreglo(int* large_arr, size_t large_arr_size,
 
 int main(void) {
     const size_t arrA_size = 20, arrB_size = 5;
+    const int start_valueA = 0, start_valueB = 9;
     int arrA[arrA_size], arrB[arrB_size];
 
-    cargar_arreglo_secuencial(arrA, arrA_size, 0);
-    cargar_arreglo_secuencial(arrB, arrB_size, 9);
+    cargar_arreglo_secuencial(arrA, arrA_size, start_valueA);
+    cargar_arreglo_secuencial(arrB, arrB_size, start_valueB);
 
     printf("Primer arreglo: \n");
     mostrar_arreglo_enteros(arrA, arrA_size);
