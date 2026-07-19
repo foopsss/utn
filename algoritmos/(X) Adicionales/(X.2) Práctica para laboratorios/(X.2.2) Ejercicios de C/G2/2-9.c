@@ -1,8 +1,9 @@
 /* Crear una función que, dado un arreglo de enteros de 10 posiciones, escriba
-por pantalla cual es el mayor número, cual es el menor y cual es el promedio. */
+por pantalla cual es el mayor número, cual es el menor y cual es el promedio.
+*/
 
-#include <stdio.h>
 #include <limits.h>
+#include <stdio.h>
 
 #include "../functions.h"
 
@@ -26,7 +27,7 @@ int main(void) {
 
         if (arr[i] < men_num) {
             men_num = arr[i];
-        }        
+        }
     }
 
     prom = prom / 10.0;
