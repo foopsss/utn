@@ -31,9 +31,9 @@ int main(void) {
     }
 
     prom = prom / 10.0;
-
     printf("El número más grande en el arreglo es: %d\n", may_num);
     printf("El número más pequeño en el arreglo es: %d\n", men_num);
-    printf("El promedio de los números en el arreglo es: %f\n", prom);
+    printf("El promedio de los números en el arreglo es: %.2f\n", prom);
+
     return 0;
 }
