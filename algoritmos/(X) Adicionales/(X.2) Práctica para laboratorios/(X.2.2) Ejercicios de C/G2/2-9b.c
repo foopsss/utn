@@ -48,6 +48,6 @@ int main(void) {
         "El número más pequeño del arreglo se encuentra por primera vez en la "
         "posición %d.\n",
         prim_pos_men);
-    
+
     return 0;
 }
