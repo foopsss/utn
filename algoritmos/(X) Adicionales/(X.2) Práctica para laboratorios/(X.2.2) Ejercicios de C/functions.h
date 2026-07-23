@@ -75,6 +75,15 @@ int get_random_number(bool get_negative_num) {
 void cargar_arreglo_enteros(int* arr, size_t arr_size, int low_lim,
                             int upp_lim) {
     assert(low_lim != upp_lim);
+
+    // Cuando se llame a get_random_number() no se permitirá
+    // que se generen números negativos porque de lo contrario,
+    // si el límite inferior es menor a 0, es muy posible que
+    // los valores negativos finales que se cargan en el
+    // arreglo de entrada estén por debajo del límite inferior
+    // debido a la fórmula utilizada para que los números
+    // devueltos por get_random_number() estén dentro de un
+    // rango específico.
     bool allow_negative_values = false;
 
     for (size_t i = 0; i < arr_size; i++) {
@@ -85,10 +94,6 @@ void cargar_arreglo_enteros(int* arr, size_t arr_size, int low_lim,
         //    un número entre 0 y la cantidad de posibles números a obtener.
         // 3. Al resultado del módulo se le suma el valor del límite
         //    inferior para que por lo menos sea igual a dicho número.
-        if (low_lim < 0) {
-            allow_negative_values = true;
-        }
-
         arr[i] = (get_random_number(allow_negative_values) %
                   (upp_lim - low_lim + 1)) +
                  low_lim;
