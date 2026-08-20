@@ -101,6 +101,12 @@ class CBackend(AbstractBackend):
         subprocess.run(command, check=True, cwd=self.path)
 
 
+language_backends = {
+    ".pas": PascalBackend,
+    ".c": CBackend,
+}
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Permite compilar y ejecutar código escrito en Pascal y"
@@ -193,32 +199,27 @@ if __name__ == "__main__":
         )
         draw_line()
 
-    filename_stem = matches[0].stem
-    file_parent_path = str(matches[0].parent.absolute())
-    is_debug_build = bool(args.debug)
-
-    if matches[0].suffix == ".pas":
-        lang_file = PascalBackend(
-            filename=filename_stem,
-            path=file_parent_path,
-            debug_build=is_debug_build,
-        )
-    elif matches[0].suffix == ".c":
-        lang_file = CBackend(
-            filename=filename_stem,
-            path=file_parent_path,
-            debug_build=is_debug_build,
-        )
-    else:
+    available_backend = language_backends.get(matches[0].suffix, None)
+    if available_backend is None:
         print(
             "Se ha proporcionado un archivo que el script no sabe cómo"
             " tratar."
         )
         sys.exit(1)
+    else:
+        filename_stem = matches[0].stem
+        file_parent_path = str(matches[0].parent.absolute())
+        is_debug_build = bool(args.debug)
 
-    if args.compile:
-        lang_file.compile()
-    elif args.execute:
-        lang_file.execute()
-    elif args.remove:
-        lang_file.remove_files()
+        lang_file = available_backend(
+            filename=filename_stem,
+            path=file_parent_path,
+            debug_build=is_debug_build,
+        )
+
+        if args.compile:
+            lang_file.compile()
+        elif args.execute:
+            lang_file.execute()
+        elif args.remove:
+            lang_file.remove_files()
