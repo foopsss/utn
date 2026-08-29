@@ -2,7 +2,7 @@
 lo ordene de menor a mayor y muestre por pantalla el arreglo ordenado. */
 
 /* NOTA: esta resolución no utiliza la función dispoible en functions.h para
-ordenar arreglos con la finalida de no hacer "trampa". */
+ordenar arreglos con la finalidad de no hacer "trampa". */
 
 #include <stdio.h>
 
