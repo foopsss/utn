@@ -3,29 +3,28 @@ el otro. */
 
 #include <stdio.h>
 
-void copiar_arreglo(int var_a[10], int var_b[10]) {
-    for (int i = 0; i <= 9; i++) {
-        var_b[i] = var_a[i];
+#include "../functions.h"
+
+void copiar_arreglo(int* empty_array, int* array_with_contents,
+                    size_t shared_arr_size) {
+    for (size_t i = 0; i < shared_arr_size; i++) {
+        empty_array[i] = array_with_contents[i];
     }
 }
 
 int main(void) {
-    int arr_a[10], arr_b[10], i;
+    const size_t arr_size = 10;
+    const int low_lim = 0, upp_lim = 10;
+    int arr_a[arr_size], arr_b[arr_size];
 
-    for (i = 0; i <= 9; i++) {
-        printf("Introduzca un número para la posición %d del arreglo A: ", i);
-        scanf("%d", &arr_a[i]);
-    }
+    cargar_arreglo_enteros(arr_a, arr_size, low_lim, upp_lim);
+    copiar_arreglo(arr_b, arr_a, arr_size);
 
-    copiar_arreglo(arr_a, arr_b);
-
+    printf("Valores del arreglo A (cargado por defecto):\n");
+    mostrar_arreglo_enteros(arr_a, arr_size);
     printf("\n");
-    printf("Valores del arreglo B\n");
-    printf("=====================\n");
-
-    for (i = 0; i <= 9; i++) {
-        printf("Valor de la posición %d del arreglo: %d\n", i, arr_b[i]);
-    }
+    printf("Valores del arreglo B (rellenado con los valores de A):\n");
+    mostrar_arreglo_enteros(arr_b, arr_size);
 
     return 0;
 }
