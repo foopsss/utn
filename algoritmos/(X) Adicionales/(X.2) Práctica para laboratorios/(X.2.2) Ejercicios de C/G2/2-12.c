@@ -6,7 +6,8 @@ por el usuario. */
 
 #include "../functions.h"
 
-void busqueda_binaria(int* arr, size_t arr_size, int val_us) {
+void busqueda_binaria(const int* arr, const size_t arr_size,
+                      const int val_us) {
     // No olvidarse de que las posiciones de arreglos empiezan
     // con 0 acá, por eso la resta en la asignación inicial de
     // "der".
@@ -34,13 +35,13 @@ int main(void) {
     int arr[arr_size], val_us;
 
     printf("Arreglo original: \n");
-    cargar_arreglo_enteros(arr, arr_size, low_lim, upp_lim);
-    mostrar_arreglo_enteros(arr, arr_size);
+    cargar_vector_enteros_aleatorios(arr, arr_size, low_lim, upp_lim);
+    mostrar_vector_enteros(arr, arr_size);
     printf("\n");
 
     printf("Arreglo ordenado: \n");
-    ordenar_arreglo_enteros(arr, arr_size);
-    mostrar_arreglo_enteros(arr, arr_size);
+    ordenar_vector_enteros(arr, arr_size);
+    mostrar_vector_enteros(arr, arr_size);
     printf("\n");
 
     printf("Introduzca el valor que se desea encontrar: ");

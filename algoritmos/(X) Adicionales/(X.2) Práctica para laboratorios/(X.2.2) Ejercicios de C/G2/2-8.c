@@ -7,14 +7,17 @@ devolver -1. */
 
 #include "../functions.h"
 
-void cargar_arreglo_secuencial(int* arr, size_t arr_size, int start_value) {
+void cargar_arreglo_secuencial(int* arr, const size_t arr_size,
+                               const int start_value) {
     for (size_t i = 0; i < arr_size; i++) {
         arr[i] = start_value + i;
     }
 }
 
-int controlar_presencia_arreglo(int* large_arr, size_t large_arr_size,
-                                int* short_arr, size_t short_arr_size) {
+int controlar_presencia_arreglo(const int* large_arr,
+                                const size_t large_arr_size,
+                                const int* short_arr,
+                                const size_t short_arr_size) {
     size_t j;
 
     // Únicamente se revisa hasta la posición (A - B), porque si ya
@@ -52,10 +55,10 @@ int main(void) {
     cargar_arreglo_secuencial(arrB, arrB_size, start_valueB);
 
     printf("Primer arreglo: \n");
-    mostrar_arreglo_enteros(arrA, arrA_size);
+    mostrar_vector_enteros(arrA, arrA_size);
     printf("\n");
     printf("Segundo arreglo: \n");
-    mostrar_arreglo_enteros(arrB, arrB_size);
+    mostrar_vector_enteros(arrB, arrB_size);
     printf("\n");
 
     int result = controlar_presencia_arreglo(arrA, arrA_size, arrB, arrB_size);

@@ -16,9 +16,9 @@ int main(void) {
     int prim_pos_may = 0, prim_pos_men = 0;
     double prom = 0;
 
-    cargar_arreglo_enteros(arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(arr, arr_size, low_lim, upp_lim);
     printf("Valores del arreglo: \n");
-    mostrar_arreglo_enteros(arr, arr_size);
+    mostrar_vector_enteros(arr, arr_size);
     printf("\n");
 
     for (size_t i = 0; i < arr_size; i++) {

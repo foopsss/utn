@@ -7,8 +7,8 @@ sean. */
 
 #include "../functions.h"
 
-int verificar_igualdad_arreglos(int* prim_arr, int* seg_arr,
-                                size_t shared_arr_size) {
+int verificar_igualdad_arreglos(const int* prim_arr, const int* seg_arr,
+                                const size_t shared_arr_size) {
     for (size_t i = 0; i < shared_arr_size; i++) {
         if (prim_arr[i] != seg_arr[i]) {
             return 0;
@@ -17,7 +17,7 @@ int verificar_igualdad_arreglos(int* prim_arr, int* seg_arr,
     return 1;
 }
 
-void evaluar_resultado(int result) {
+void evaluar_resultado(const int result) {
     if (result == 1) {
         printf("(los arreglos son iguales)\n");
     } else {
@@ -34,13 +34,13 @@ int main(void) {
     // los arreglos cargados tengan exactamente los mismos valores,
     // debido a que generar números aleatorios cuando se usa el
     // tiempo como semilla no es el mejor método para dicho fin.
-    cargar_arreglo_enteros(prim_arr, arr_size, low_lim, upp_lim);
-    cargar_arreglo_enteros(seg_arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(prim_arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(seg_arr, arr_size, low_lim, upp_lim);
 
     printf("Primer arreglo generado por la computadora: \n");
-    mostrar_arreglo_enteros(prim_arr, arr_size);
+    mostrar_vector_enteros(prim_arr, arr_size);
     printf("\nSegundo arreglo generado por la computadora: \n");
-    mostrar_arreglo_enteros(seg_arr, arr_size);
+    mostrar_vector_enteros(seg_arr, arr_size);
 
     result = verificar_igualdad_arreglos(prim_arr, seg_arr, arr_size);
     printf("\nEl resultado de la comparación es: %d ", result);
@@ -51,7 +51,7 @@ int main(void) {
     }
 
     printf("\nRedefinición del segundo arreglo: \n");
-    mostrar_arreglo_enteros(seg_arr, arr_size);
+    mostrar_vector_enteros(seg_arr, arr_size);
 
     result = verificar_igualdad_arreglos(prim_arr, seg_arr, arr_size);
     printf("\nEl resultado de la comparación es: %d ", result);
