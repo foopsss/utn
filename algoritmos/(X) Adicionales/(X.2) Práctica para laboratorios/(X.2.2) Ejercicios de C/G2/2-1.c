@@ -3,21 +3,16 @@ pantalla. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
-    int arr_ent[10], i;
+    const size_t arr_size = 10;
+    int arr_ent[arr_size];
 
-    for (i = 0; i <= 9; i++) {
-        printf("Introduzca un número para la posición %d del arreglo: ", i);
-        scanf("%d", &arr_ent[i]);
-    }
-
+    cargar_vector_enteros_usuario(arr_ent, arr_size);
     printf("\n");
-    printf("Valores cargados\n");
-    printf("================\n");
-
-    for (i = 0; i <= 9; i++) {
-        printf("Valor de la posición %d del arreglo: %d\n", i, arr_ent[i]);
-    }
+    printf("Valores del arreglo: \n");
+    mostrar_vector_enteros(arr_ent, arr_size);
 
     return 0;
 }

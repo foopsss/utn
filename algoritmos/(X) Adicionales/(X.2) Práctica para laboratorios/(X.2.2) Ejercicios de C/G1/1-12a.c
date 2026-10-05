@@ -1,7 +1,7 @@
 /* Generar un algoritmo que diga si un número es primo. */
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 int main(void) {
     int num_us;

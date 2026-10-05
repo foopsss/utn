@@ -2,8 +2,8 @@
 // número es perfecto. Es decir, si la suma de sus divisores, sin contar a sí
 // mismo, es igual al número en cuestión.
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool es_perfecto(int num, int divisor, int suma_div) {
     if (divisor != 0) {

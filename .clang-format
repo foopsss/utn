@@ -1,0 +1,9 @@
+BasedOnStyle: Google
+
+# Longitud máxima de las líneas.
+ColumnLimit: 79
+
+# Indentación.
+IndentWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never

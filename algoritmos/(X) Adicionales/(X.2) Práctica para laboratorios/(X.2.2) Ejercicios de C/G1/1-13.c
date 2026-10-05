@@ -65,10 +65,13 @@ int main(void) {
             printf("El número más pequeño es: %d\n", mas_peq);
             printf("Entre ellos se encuentra el número: %d\n", med);
         } else if (mas_gr == med && med != mas_peq) {
-            printf("¡El número más grande y el mediano coinciden! Valor: %d\n", mas_gr);
+            printf("¡El número más grande y el mediano coinciden! Valor: %d\n",
+                   mas_gr);
             printf("El número más pequeño es: %d\n", mas_peq);
         } else if (mas_gr != med && med == mas_peq) {
-            printf("¡El número más pequeño y el mediano coinciden! Valor: %d\n", med);
+            printf(
+                "¡El número más pequeño y el mediano coinciden! Valor: %d\n",
+                med);
             printf("El número más grande es: %d\n", mas_gr);
         }
     }

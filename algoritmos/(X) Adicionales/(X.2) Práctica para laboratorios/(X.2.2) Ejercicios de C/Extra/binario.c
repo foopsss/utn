@@ -2,8 +2,8 @@
 // permite calcular si se cumple el patrón de que el número esté compuesto por
 // una serie de repeticiones del número 10, como 10101010.
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool cumple_patron(long int entrada) {
     // Descomentar esto si se quiere ver
@@ -25,7 +25,7 @@ bool cumple_patron(long int entrada) {
 
     if (entrada % 100 != entrada) {
         if (entrada % 100 != 10) {
-             return false;
+            return false;
         } else {
             cumple_patron(entrada / 100);
         }

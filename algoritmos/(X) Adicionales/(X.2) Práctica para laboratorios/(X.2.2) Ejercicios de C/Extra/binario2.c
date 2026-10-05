@@ -2,8 +2,8 @@
 // permite calcular si se cumple el patrón de que el número esté compuesto por
 // una cantidad de 0 que sea múltiplo de 3.
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool cumple_patron(long int entrada, int cant_cero) {
     // Descomentar esto si se quiere ver
@@ -35,17 +35,27 @@ int main() {
     long int numero2 = 1011011100;
 
     if (cumple_patron(numero, 0)) {
-        printf("El número %ld tiene una cantidad de 0s que es múltiplo de 3.\n", numero);
+        printf(
+            "El número %ld tiene una cantidad de 0s que es múltiplo de 3.\n",
+            numero);
     } else {
-        printf("El número %ld tiene una cantidad de 0s que NO es múltiplo de 3.\n", numero);
+        printf(
+            "El número %ld tiene una cantidad de 0s que NO es múltiplo de "
+            "3.\n",
+            numero);
     }
 
     printf("--------------------------------------------------\n");
 
     if (cumple_patron(numero2, 0)) {
-        printf("El número %ld tiene una cantidad de 0s que es múltiplo de 3.\n", numero2);
+        printf(
+            "El número %ld tiene una cantidad de 0s que es múltiplo de 3.\n",
+            numero2);
     } else {
-        printf("El número %ld tiene una cantidad de 0s que NO es múltiplo de 3.\n", numero2);
+        printf(
+            "El número %ld tiene una cantidad de 0s que NO es múltiplo de "
+            "3.\n",
+            numero2);
     }
 
     return 0;

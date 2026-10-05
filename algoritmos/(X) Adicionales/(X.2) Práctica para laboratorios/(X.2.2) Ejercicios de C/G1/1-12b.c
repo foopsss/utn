@@ -1,7 +1,8 @@
-/* Generar un algoritmo que encuentre los primeros 50 números que sean primos. */
+/* Generar un algoritmo que encuentre los primeros 50 números que sean primos.
+ */
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool verificar_primo(int var_num) {
     bool es_primo = true;
@@ -15,7 +16,7 @@ bool verificar_primo(int var_num) {
 
     if (es_primo) {
         return true;
-    }  else {
+    } else {
         return false;
     }
 }

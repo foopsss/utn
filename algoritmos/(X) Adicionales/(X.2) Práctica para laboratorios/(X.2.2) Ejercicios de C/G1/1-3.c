@@ -49,7 +49,7 @@ int main() {
     scanf("%d", &y);
 
     printf("\n");
-    switch(eleccion) {
+    switch (eleccion) {
         case 1:
             op_suma(x, y);
             break;
