@@ -15,21 +15,26 @@ def draw_line() -> None:
 class AbstractBackend(ABC):
     def __init__(self, filename: str, path: str, debug_build: bool):
         self.filename = filename
-        self.path = path
+        self.path = Path(path)
         self.debug_build = debug_build
 
-    def _get_binary_name(self):
-        if os.name != "nt":
-            return f"./{self.filename}"
-        else:
-            return f"{self.filename}.exe"
+    def _get_binary_path(self) -> Path:
+        ext = ".exe" if os.name == "nt" else ""
+        return self.path / f"{self.filename}{ext}"
 
     def execute(self):
         self.compile()
         draw_line()
-        binary_name = self._get_binary_name()
-        command = ["gdb", binary_name] if self.debug_build else binary_name
-        subprocess.run(command, check=True, cwd=self.path)
+        exec_path = self._get_binary_path().name
+
+        if self.debug_build:
+            command = ["gdb", exec_path]
+        else:
+            command = (
+                [f"./{exec_path}"] if os.name != "nt" else [f"{exec_path}"]
+            )
+
+        subprocess.run(command, check=True, cwd=str(self.path))
 
     def remove_files(self):
         # Implementación compartida, pero parcial, del
@@ -37,16 +42,15 @@ class AbstractBackend(ABC):
         # Posiblemente deba ser sobreescrita por las
         # clases herederas para añadir más funcionalidad
         # de borrado o redefinirla por completo.
-        binary_name = self._get_binary_name()
-        full_exec_path = self.path + "/" + binary_name
+        full_exec_path = self._get_binary_path()
 
-        if os.path.exists(full_exec_path):
-            os.remove(full_exec_path)
+        if full_exec_path.exists() and full_exec_path.is_file():
+            full_exec_path.unlink()
             print("Ejecutable principal eliminado.")
         else:
             print(
                 "No se pudo encontrar ningún ejecutable llamado"
-                f" {binary_name} para borrar."
+                f" '{full_exec_path.name}' para borrar."
             )
 
     @abstractmethod
