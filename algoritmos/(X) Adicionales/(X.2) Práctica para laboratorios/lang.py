@@ -95,7 +95,18 @@ class PascalBackend(AbstractBackend):
 
 class CBackend(AbstractBackend):
     def compile(self):
-        command = ["gcc", f"{self.filename}.c", "-o", self.filename]
+        command = [
+            "gcc",
+            "-std=c23",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-Wpedantic",
+            "-pedantic-errors",
+            f"{self.filename}.c",
+            "-o",
+            self.filename,
+        ]
 
         if self.debug_build:
             command.insert(1, "-g")
