@@ -29,7 +29,7 @@
 #endif
 // clang-format on
 
-static inline int _obtener_num_positivo_aleatorio() {
+static inline int _obtener_num_positivo_aleatorio(void) {
     int num;
 
     // clang-format off
