@@ -1,8 +1,6 @@
 /* Escribir un algoritmo que ponga en cero todos los elementos de una matriz
 5x5 y la muestre por pantalla. */
 
-#include <stdio.h>
-
 #include "../functions.h"
 
 void cargar_matriz_ceros(const size_t hor_size, const size_t ver_size,
