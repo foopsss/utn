@@ -1,6 +1,8 @@
 /* Escribir un algoritmo que, dada una matriz de 5x10, sume los elementos de
 todas las filas y los guarde en un arreglo de 5 posiciones. */
 
+#include <stdio.h>
+
 #include "../functions.h"
 
 int main(void) {
