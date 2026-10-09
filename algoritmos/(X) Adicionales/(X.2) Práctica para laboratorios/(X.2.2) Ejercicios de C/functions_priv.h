@@ -29,7 +29,7 @@
 #endif
 // clang-format on
 
-static inline int _obtener_num_positivo_aleatorio() {
+static inline int _obtener_num_positivo_aleatorio(void) {
     int num;
 
     // clang-format off
@@ -88,7 +88,7 @@ static inline void _imprimir_string_subrayado(const char* string, ...) {
     putchar('\n');
 
     for (int i = 0; i < str_len; i++) {
-        putchar('=');
+        putchar('-');
     }
     putchar('\n');
 }
