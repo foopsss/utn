@@ -10,10 +10,10 @@ int main(void) {
     const int lim_inf = -100, lim_sup = 100;
     int mat[hor_size_mat][ver_size_mat], vec_suma_col[hor_size_mat];
 
-    cargar_matriz_enteros_aleatorios(hor_size_mat, ver_size_mat, mat, lim_inf,
-                                     lim_sup);
     printf("Matriz de enteros cargada\n");
     printf("=========================\n");
+    cargar_matriz_enteros_aleatorios(hor_size_mat, ver_size_mat, mat, lim_inf,
+                                     lim_sup);
     mostrar_matriz_enteros(hor_size_mat, ver_size_mat, mat);
 
     printf("Vector de suma de filas\n");
