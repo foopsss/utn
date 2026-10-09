@@ -1,8 +1,6 @@
 /* A partir del ejercicio anterior, realizar una función para cargar el arreglo
 y otra para mostrarlo por pantalla. */
 
-#include <stdio.h>
-
 #include "../functions.h"
 
 int main(void) {
