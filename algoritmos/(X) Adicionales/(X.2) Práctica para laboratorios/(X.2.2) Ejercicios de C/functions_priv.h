@@ -88,7 +88,7 @@ static inline void _imprimir_string_subrayado(const char* string, ...) {
     putchar('\n');
 
     for (int i = 0; i < str_len; i++) {
-        putchar('=');
+        putchar('-');
     }
     putchar('\n');
 }
