@@ -15,7 +15,7 @@ int main(void) {
         inv = inv + num_us % 10;
         num_us = num_us / 10;
     }
-    
+
     printf("Reverso del número: %d\n", inv);
 
     return 0;

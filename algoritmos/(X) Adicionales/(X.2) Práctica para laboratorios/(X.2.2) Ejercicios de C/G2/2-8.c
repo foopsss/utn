@@ -8,16 +8,16 @@ devolver -1. */
 #include "../functions.h"
 
 void cargar_vector_secuencial(int* vec, const size_t vec_size,
-                               const int start_value) {
+                              const int start_value) {
     for (size_t i = 0; i < vec_size; i++) {
         vec[i] = start_value + i;
     }
 }
 
 int controlar_presencia_vector(const int* large_vec,
-                                const size_t large_vec_size,
-                                const int* short_vec,
-                                const size_t short_vec_size) {
+                               const size_t large_vec_size,
+                               const int* short_vec,
+                               const size_t short_vec_size) {
     size_t j;
 
     // Únicamente se revisa hasta la posición (A - B), porque si ya
