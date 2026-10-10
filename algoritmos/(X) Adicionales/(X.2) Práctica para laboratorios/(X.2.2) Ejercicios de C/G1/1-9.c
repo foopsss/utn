@@ -16,5 +16,6 @@ int main(void) {
     }
 
     printf("Factorial de %d: %d\n", num_us, fact);
+
     return 0;
 }

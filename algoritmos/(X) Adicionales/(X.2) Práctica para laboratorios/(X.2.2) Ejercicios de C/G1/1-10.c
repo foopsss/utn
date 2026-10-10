@@ -17,5 +17,6 @@ int main(void) {
     }
 
     printf("Resultado del producto: %d\n", prod);
+
     return 0;
 }

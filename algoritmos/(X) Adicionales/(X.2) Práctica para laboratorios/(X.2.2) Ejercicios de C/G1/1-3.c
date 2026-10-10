@@ -4,27 +4,27 @@ deben ser ingresados por el usuario, así como la operación a realizar. */
 
 #include <stdio.h>
 
-void op_suma(int a, int b) {
+void op_suma(const int a, const int b) {
     int suma = a + b;
     printf("Resultado de la suma: %d\n", suma);
 }
 
-void op_resta(int a, int b) {
+void op_resta(const int a, const int b) {
     int resta = a - b;
     printf("Resultado de la resta: %d\n", resta);
 }
 
-void op_producto(int a, int b) {
+void op_producto(const int a, const int b) {
     int mult = a * b;
     printf("Resultado de la multiplicación: %d\n", mult);
 }
 
-void op_divent(int a, int b) {
+void op_divent(const int a, const int b) {
     int div_ent = a / b;
     printf("Resultado de la división entera: %d\n", div_ent);
 }
 
-void op_resto(int a, int b) {
+void op_resto(const int a, const int b) {
     int resto = a % b;
     printf("Resultado del resto: %d\n", resto);
 }

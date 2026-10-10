@@ -4,10 +4,11 @@ y otra para mostrarlo por pantalla. */
 #include "../functions.h"
 
 int main(void) {
-    const size_t arr_size = 10;
-    int arr_ent[arr_size];
+    const size_t vec_size = 10;
+    int vec[vec_size];
 
-    cargar_vector_enteros_usuario(arr_ent, arr_size);
-    mostrar_vector_enteros(arr_ent, arr_size);
+    cargar_vector_enteros_usuario(vec, vec_size);
+    mostrar_vector_enteros(vec, vec_size);
+
     return 0;
 }

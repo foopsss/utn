@@ -5,26 +5,26 @@ el otro. */
 
 #include "../functions.h"
 
-void copiar_arreglo(int* empty_array, const int* array_with_contents,
-                    const size_t shared_arr_size) {
-    for (size_t i = 0; i < shared_arr_size; i++) {
-        empty_array[i] = array_with_contents[i];
+void copiar_arreglo(int* empty_vec, const int* vec_with_contents,
+                    const size_t shared_vec_size) {
+    for (size_t i = 0; i < shared_vec_size; i++) {
+        empty_vec[i] = vec_with_contents[i];
     }
 }
 
 int main(void) {
-    const size_t arr_size = 10;
-    const int low_lim = 0, upp_lim = 10;
-    int arr_a[arr_size], arr_b[arr_size];
+    const size_t vec_size = 10;
+    const int lim_inf = 0, lim_sup = 10;
+    int vec_a[vec_size], vec_b[vec_size];
 
-    cargar_vector_enteros_aleatorios(arr_a, arr_size, low_lim, upp_lim);
-    copiar_arreglo(arr_b, arr_a, arr_size);
+    cargar_vector_enteros_aleatorios(vec_a, vec_size, lim_inf, lim_sup);
+    copiar_arreglo(vec_b, vec_a, vec_size);
 
     printf("Valores del arreglo A (cargado por defecto):\n");
-    mostrar_vector_enteros(arr_a, arr_size);
+    mostrar_vector_enteros(vec_a, vec_size);
     printf("\n");
     printf("Valores del arreglo B (rellenado con los valores de A):\n");
-    mostrar_vector_enteros(arr_b, arr_size);
+    mostrar_vector_enteros(vec_b, vec_size);
 
     return 0;
 }

@@ -6,18 +6,18 @@ lo ordene de menor a mayor y muestre por pantalla el arreglo ordenado. */
 #include "../functions.h"
 
 int main(void) {
-    const size_t arr_size = 100;
-    const int low_lim = -100, upp_lim = 100;
-    int arr[arr_size];
+    const size_t vec_size = 100;
+    const int lim_inf = -100, lim_sup = 100;
+    int vec[vec_size];
 
-    cargar_vector_enteros_aleatorios(arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
     printf("Valores del arreglo: \n");
-    mostrar_vector_enteros(arr, arr_size);
+    mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
-    ordenar_vector_enteros(arr, arr_size);
+    ordenar_vector_enteros(vec, vec_size);
     printf("Valores del arreglo ordenado: \n");
-    mostrar_vector_enteros(arr, arr_size);
+    mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
     return 0;

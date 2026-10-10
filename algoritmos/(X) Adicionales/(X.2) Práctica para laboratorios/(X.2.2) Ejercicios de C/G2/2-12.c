@@ -6,15 +6,15 @@ por el usuario. */
 
 #include "../functions.h"
 
-void busqueda_binaria(const int* arr, const size_t arr_size,
+void busqueda_binaria(const int* vec, const size_t vec_size,
                       const int val_us) {
     // No olvidarse de que las posiciones de arreglos empiezan
     // con 0 acá, por eso la resta en la asignación inicial de
     // "der".
-    int izq = 0, der = (arr_size - 1), centro = (izq + der) / 2;
+    int izq = 0, der = (vec_size - 1), centro = (izq + der) / 2;
 
-    while (izq < der && arr[centro] != val_us) {
-        if (arr[centro] > val_us) {
+    while (izq < der && vec[centro] != val_us) {
+        if (vec[centro] > val_us) {
             der = centro - 1;
         } else {
             izq = centro + 1;
@@ -22,7 +22,7 @@ void busqueda_binaria(const int* arr, const size_t arr_size,
         centro = (izq + der) / 2;
     }
 
-    if (arr[centro] == val_us) {
+    if (vec[centro] == val_us) {
         printf("Se encontró el elemento buscado en la posición %d.\n", centro);
     } else {
         printf("No se pudo encontrar el elemento buscado.\n");
@@ -30,23 +30,23 @@ void busqueda_binaria(const int* arr, const size_t arr_size,
 }
 
 int main(void) {
-    const size_t arr_size = 100;
-    const int low_lim = -100, upp_lim = 100;
-    int arr[arr_size], val_us;
+    const size_t vec_size = 100;
+    const int lim_inf = -100, lim_sup = 100;
+    int vec[vec_size], val_us;
 
     printf("Arreglo original: \n");
-    cargar_vector_enteros_aleatorios(arr, arr_size, low_lim, upp_lim);
-    mostrar_vector_enteros(arr, arr_size);
+    cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
+    mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
     printf("Arreglo ordenado: \n");
-    ordenar_vector_enteros(arr, arr_size);
-    mostrar_vector_enteros(arr, arr_size);
+    ordenar_vector_enteros(vec, vec_size);
+    mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
     printf("Introduzca el valor que se desea encontrar: ");
     scanf("%d", &val_us);
-    busqueda_binaria(arr, arr_size, val_us);
+    busqueda_binaria(vec, vec_size, val_us);
 
     return 0;
 }

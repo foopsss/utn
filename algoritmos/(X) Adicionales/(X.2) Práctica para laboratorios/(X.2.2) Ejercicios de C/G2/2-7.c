@@ -7,10 +7,10 @@ sean. */
 
 #include "../functions.h"
 
-int verificar_igualdad_arreglos(const int* prim_arr, const int* seg_arr,
-                                const size_t shared_arr_size) {
-    for (size_t i = 0; i < shared_arr_size; i++) {
-        if (prim_arr[i] != seg_arr[i]) {
+int verificar_igualdad_arreglos(const int* prim_vec, const int* seg_vec,
+                                const size_t shared_vec_size) {
+    for (size_t i = 0; i < shared_vec_size; i++) {
+        if (prim_vec[i] != seg_vec[i]) {
             return 0;
         }
     }
@@ -26,34 +26,34 @@ void evaluar_resultado(const int result) {
 }
 
 int main(void) {
-    const size_t arr_size = 10;
-    const int low_lim = 0, upp_lim = 100;
-    int prim_arr[arr_size], seg_arr[arr_size], result;
+    const size_t vec_size = 10;
+    const int lim_inf = 0, lim_sup = 100;
+    int prim_vec[vec_size], seg_vec[vec_size], result;
 
     // Es posible que en plataformas distintas de Windows y Linux
     // los arreglos cargados tengan exactamente los mismos valores,
     // debido a que generar números aleatorios cuando se usa el
     // tiempo como semilla no es el mejor método para dicho fin.
-    cargar_vector_enteros_aleatorios(prim_arr, arr_size, low_lim, upp_lim);
-    cargar_vector_enteros_aleatorios(seg_arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(prim_vec, vec_size, lim_inf, lim_sup);
+    cargar_vector_enteros_aleatorios(seg_vec, vec_size, lim_inf, lim_sup);
 
     printf("Primer arreglo generado por la computadora: \n");
-    mostrar_vector_enteros(prim_arr, arr_size);
+    mostrar_vector_enteros(prim_vec, vec_size);
     printf("\nSegundo arreglo generado por la computadora: \n");
-    mostrar_vector_enteros(seg_arr, arr_size);
+    mostrar_vector_enteros(seg_vec, vec_size);
 
-    result = verificar_igualdad_arreglos(prim_arr, seg_arr, arr_size);
+    result = verificar_igualdad_arreglos(prim_vec, seg_vec, vec_size);
     printf("\nEl resultado de la comparación es: %d ", result);
     evaluar_resultado(result);
 
-    for (size_t i = 0; i < arr_size; i++) {
-        seg_arr[i] = prim_arr[i];
+    for (size_t i = 0; i < vec_size; i++) {
+        seg_vec[i] = prim_vec[i];
     }
 
     printf("\nRedefinición del segundo arreglo: \n");
-    mostrar_vector_enteros(seg_arr, arr_size);
+    mostrar_vector_enteros(seg_vec, vec_size);
 
-    result = verificar_igualdad_arreglos(prim_arr, seg_arr, arr_size);
+    result = verificar_igualdad_arreglos(prim_vec, seg_vec, vec_size);
     printf("\nEl resultado de la comparación es: %d ", result);
     evaluar_resultado(result);
 

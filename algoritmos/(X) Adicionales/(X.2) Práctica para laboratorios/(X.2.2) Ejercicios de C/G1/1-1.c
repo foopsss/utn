@@ -5,8 +5,7 @@ son: X = 132 e Y = 34. */
 #include <stdio.h>
 
 int main() {
-    int x = 132;
-    int y = 34;
+    const int x = 132, y = 34;
 
     int suma = x + y;
     int resta = x - y;

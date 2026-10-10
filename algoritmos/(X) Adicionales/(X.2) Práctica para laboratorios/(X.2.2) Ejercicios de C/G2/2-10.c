@@ -8,21 +8,21 @@ en el arreglo. */
 #include "../functions.h"
 
 int main(void) {
-    const size_t arr_size = 10;
-    const int low_lim = -100, upp_lim = 100;
-    int arr[arr_size], num_us, cant_coincidencias = 0;
+    const size_t vec_size = 10;
+    const int lim_inf = -100, lim_sup = 100;
+    int vec[vec_size], num_us, cant_coincidencias = 0;
 
     printf("Introduzca un número a buscar en el arreglo: ");
     scanf("%d", &num_us);
     printf("\n");
 
-    cargar_vector_enteros_aleatorios(arr, arr_size, low_lim, upp_lim);
+    cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
     printf("Valores del arreglo: \n");
-    mostrar_vector_enteros(arr, arr_size);
+    mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
-    for (size_t i = 0; i < arr_size; i++) {
-        if (arr[i] == num_us) {
+    for (size_t i = 0; i < vec_size; i++) {
+        if (vec[i] == num_us) {
             printf("Número encontrado en la posición %zu del arreglo.\n", i);
             cant_coincidencias += 1;
         }

@@ -20,5 +20,6 @@ int main(void) {
 
     printf("Resultado de la división entera: %d\n", div_ent);
     printf("Resto de la operación: %d\n", num_a);
+    
     return 0;
 }

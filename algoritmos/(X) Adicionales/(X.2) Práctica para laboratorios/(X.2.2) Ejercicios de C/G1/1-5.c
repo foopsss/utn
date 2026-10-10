@@ -14,7 +14,8 @@ int main(void) {
         suma_dig += num_us % 10;
         num_us = num_us / 10;
     }
-
+    
     printf("Suma de los dígitos del número: %d\n", suma_dig);
+
     return 0;
 }

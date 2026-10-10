@@ -5,9 +5,9 @@ posiciones y devuelva el resultado. */
 
 #include "../functions.h"
 
-int sumar_elementos(int* arr, const size_t arr_size) {
+int sumar_elementos(int* arr, const size_t vec_size) {
     int suma = 0;
-    for (size_t i = 0; i < arr_size; i++) {
+    for (size_t i = 0; i < vec_size; i++) {
         printf("Posición del arreglo: %zu|Número: %d\n", i, arr[i]);
         suma += arr[i];
     }
@@ -15,12 +15,13 @@ int sumar_elementos(int* arr, const size_t arr_size) {
 }
 
 int main(void) {
-    const size_t arr_size = 10;
-    const int low_lim = 0, upp_lim = 100;
-    int arr_ent[arr_size], suma_elem;
+    const size_t vec_size = 10;
+    const int lim_inf = 0, lim_sup = 100;
+    int vec[vec_size], suma_elem;
 
-    cargar_vector_enteros_aleatorios(arr_ent, arr_size, low_lim, upp_lim);
-    suma_elem = sumar_elementos(arr_ent, arr_size);
+    cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
+    suma_elem = sumar_elementos(vec, vec_size);
     printf("Valor de la suma de los elementos del arreglo: %d\n", suma_elem);
+
     return 0;
 }

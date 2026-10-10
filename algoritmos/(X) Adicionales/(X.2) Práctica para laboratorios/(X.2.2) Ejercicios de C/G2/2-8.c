@@ -7,30 +7,30 @@ devolver -1. */
 
 #include "../functions.h"
 
-void cargar_arreglo_secuencial(int* arr, const size_t arr_size,
+void cargar_vector_secuencial(int* vec, const size_t vec_size,
                                const int start_value) {
-    for (size_t i = 0; i < arr_size; i++) {
-        arr[i] = start_value + i;
+    for (size_t i = 0; i < vec_size; i++) {
+        vec[i] = start_value + i;
     }
 }
 
-int controlar_presencia_arreglo(const int* large_arr,
-                                const size_t large_arr_size,
-                                const int* short_arr,
-                                const size_t short_arr_size) {
+int controlar_presencia_vector(const int* large_vec,
+                                const size_t large_vec_size,
+                                const int* short_vec,
+                                const size_t short_vec_size) {
     size_t j;
 
     // Únicamente se revisa hasta la posición (A - B), porque si ya
     // no coinciden ahí los arreglos, luego no alcanzan los espacios
     // para que coincidan por completo.
-    for (size_t i = 0; i <= (large_arr_size - short_arr_size); i++) {
-        for (j = 0; j < short_arr_size; j++) {
-            if (short_arr[j] != large_arr[i + j]) {
+    for (size_t i = 0; i <= (large_vec_size - short_vec_size); i++) {
+        for (j = 0; j < short_vec_size; j++) {
+            if (short_vec[j] != large_vec[i + j]) {
                 break;
             }
         }
 
-        if (j == short_arr_size) {
+        if (j == short_vec_size) {
             // Type cast para ser coherente con los valores que se
             // trabajan y devuelven. "size_t" es un "unsigned int"
             // utilizado para trabajar con índices, mientras que
@@ -47,21 +47,21 @@ int controlar_presencia_arreglo(const int* large_arr,
 }
 
 int main(void) {
-    const size_t arrA_size = 20, arrB_size = 5;
+    const size_t vecA_size = 20, vecB_size = 5;
     const int start_valueA = 0, start_valueB = 9;
-    int arrA[arrA_size], arrB[arrB_size];
+    int vecA[vecA_size], vecB[vecB_size];
 
-    cargar_arreglo_secuencial(arrA, arrA_size, start_valueA);
-    cargar_arreglo_secuencial(arrB, arrB_size, start_valueB);
+    cargar_vector_secuencial(vecA, vecA_size, start_valueA);
+    cargar_vector_secuencial(vecB, vecB_size, start_valueB);
 
     printf("Primer arreglo: \n");
-    mostrar_vector_enteros(arrA, arrA_size);
+    mostrar_vector_enteros(vecA, vecA_size);
     printf("\n");
     printf("Segundo arreglo: \n");
-    mostrar_vector_enteros(arrB, arrB_size);
+    mostrar_vector_enteros(vecB, vecB_size);
     printf("\n");
 
-    int result = controlar_presencia_arreglo(arrA, arrA_size, arrB, arrB_size);
+    int result = controlar_presencia_vector(vecA, vecA_size, vecB, vecB_size);
     if (result == -1) {
         printf("El segundo arreglo no se encuentra dentro del primero.");
     } else {
