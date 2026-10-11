@@ -4,6 +4,8 @@
 // https://stackoverflow.com/questions/54202670
 // https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/rand-s?view=msvc-170
 // https://man7.org/linux/man-pages/man2/getrandom.2.html
+// https://bumbershootsoft.wordpress.com/2022/07/24/custom-printf-wrapping-variadic-functions-in-c/
+// https://www.zetcode.com/clang/vsnprintf/
 
 #ifndef FUNCTIONS_PRIV_H
 #define FUNCTIONS_PRIV_H
