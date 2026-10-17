@@ -13,7 +13,7 @@ int main(void) {
     int vec[vec_size], num_us, cant_coincidencias = 0;
 
     printf("Introduzca un número a buscar en el arreglo: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
     printf("\n");
 
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);

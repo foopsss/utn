@@ -11,7 +11,7 @@ void busqueda_binaria(const int* vec, const size_t vec_size,
     // No olvidarse de que las posiciones de arreglos empiezan
     // con 0 acá, por eso la resta en la asignación inicial de
     // "der".
-    int izq = 0, der = (vec_size - 1), centro = (izq + der) / 2;
+    int izq = 0, der = (int)(vec_size - 1), centro = (izq + der) / 2;
 
     while (izq < der && vec[centro] != val_us) {
         if (vec[centro] > val_us) {
@@ -45,7 +45,7 @@ int main(void) {
     printf("\n");
 
     printf("Introduzca el valor que se desea encontrar: ");
-    scanf("%d", &val_us);
+    val_us = obtener_entero_usuario();
     busqueda_binaria(vec, vec_size, val_us);
 
     return 0;

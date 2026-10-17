@@ -9,8 +9,8 @@ mayor valor. */
 int main(void) {
     const size_t hor_size = 3, ver_size = 4;
     const int lim_inf = -100, lim_sup = 100;
-    int mat[hor_size][ver_size], mayor_valor = INT_MIN, fila_mayor_valor,
-                                 columna_mayor_valor;
+    size_t fila_mayor_valor = 0, columna_mayor_valor = 0;
+    int mat[hor_size][ver_size], mayor_valor = INT_MIN;
 
     printf("Matriz de enteros cargada\n");
     printf("=========================\n");
@@ -36,7 +36,7 @@ int main(void) {
     }
 
     printf("El valor de mayor tamaño en la matriz es: %d\n", mayor_valor);
-    printf("Fue encontrado en la fila %d y en la columna %d.\n",
+    printf("Fue encontrado en la fila %zu y en la columna %zu.\n",
            fila_mayor_valor, columna_mayor_valor);
 
     return 0;

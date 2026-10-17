@@ -13,7 +13,7 @@ int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 100;
     int vec[vec_size], may_num = INT_MIN, men_num = INT_MAX;
-    int prim_pos_may = 0, prim_pos_men = 0;
+    size_t prim_pos_may = 0, prim_pos_men = 0;
     double prom = 0;
 
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
@@ -42,11 +42,11 @@ int main(void) {
     printf("\n");
     printf(
         "El número más grande del arreglo se encuentra por primera vez en la "
-        "posición %d.\n",
+        "posición %zu.\n",
         prim_pos_may);
     printf(
         "El número más pequeño del arreglo se encuentra por primera vez en la "
-        "posición %d.\n",
+        "posición %zu.\n",
         prim_pos_men);
 
     return 0;

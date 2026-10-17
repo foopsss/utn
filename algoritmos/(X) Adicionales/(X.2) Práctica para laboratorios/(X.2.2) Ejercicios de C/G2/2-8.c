@@ -10,7 +10,7 @@ devolver -1. */
 void cargar_vector_secuencial(int* vec, const size_t vec_size,
                               const int start_value) {
     for (size_t i = 0; i < vec_size; i++) {
-        vec[i] = start_value + i;
+        vec[i] = start_value + (int)i;
     }
 }
 
