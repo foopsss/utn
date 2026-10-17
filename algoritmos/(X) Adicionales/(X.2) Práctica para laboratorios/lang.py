@@ -106,6 +106,7 @@ class CBackend(AbstractBackend):
             "-pedantic-errors",
             "-Wstrict-aliasing=2",
             "-Wconversion",
+            "-Wshadow",
             f"{self.filename}.c",
             "-o",
             self.filename,
