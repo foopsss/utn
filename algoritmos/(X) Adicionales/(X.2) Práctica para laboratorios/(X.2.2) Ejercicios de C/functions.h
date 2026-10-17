@@ -26,7 +26,8 @@ static inline int obtener_entero_usuario() {
     return output;
 }
 
-static inline void imprimir_string_subrayado(const char* string, ...) {
+static inline void imprimir_string_subrayado(const char line_symbol,
+                                             const char* string, ...) {
     va_list str_args;
     int str_len = 0, str_alloc_res = 0, fixed_str_len, i;
     size_t null_buffer_size = 0;
@@ -85,7 +86,7 @@ static inline void imprimir_string_subrayado(const char* string, ...) {
     putchar('\n');
 
     for (i = 0; i < fixed_str_len; i++) {
-        putchar('-');
+        putchar(line_symbol);
     }
 
     putchar('\n');
@@ -155,8 +156,10 @@ static inline void cargar_matriz_enteros_aleatorios(
 static inline void mostrar_matriz_enteros(const size_t hor_size,
                                           const size_t ver_size,
                                           int mat[hor_size][ver_size]) {
+    char line_symbol = '-';
+
     for (size_t i = 0; i < hor_size; i++) {
-        imprimir_string_subrayado("Fila %zu\n", i);
+        imprimir_string_subrayado(line_symbol, "Fila %zu\n", i);
 
         for (size_t j = 0; j < ver_size; j++) {
             printf("Valor de la columna %zu: %d\n", j, mat[i][j]);
