@@ -4,8 +4,6 @@
 // https://stackoverflow.com/questions/54202670
 // https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/rand-s?view=msvc-170
 // https://man7.org/linux/man-pages/man2/getrandom.2.html
-// https://bumbershootsoft.wordpress.com/2022/07/24/custom-printf-wrapping-variadic-functions-in-c/
-// https://www.zetcode.com/clang/vsnprintf/
 
 #ifndef FUNCTIONS_PRIV_H
 #define FUNCTIONS_PRIV_H
@@ -19,7 +17,6 @@
 #endif
 
 #include <assert.h>
-#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -60,39 +57,6 @@ static inline int _obtener_num_positivo_aleatorio(void) {
     }
 
     return num;
-}
-
-static inline void _imprimir_string_subrayado(const char* string, ...) {
-    va_list str_args;
-    int null_buffer_size = 0;
-
-    va_start(str_args, string);
-    // Se escribe al búfer NULL para poder medir
-    // primero la longitud del string de entrada.
-    int str_len = vsnprintf(NULL, null_buffer_size, string, str_args);
-    va_end(str_args);
-
-    char buffer_a_imprimir[str_len + 1];
-    va_start(str_args, string);
-    vsnprintf(buffer_a_imprimir, str_len + 1, string, str_args);
-    va_end(str_args);
-
-    // Si el último carácter del string es un salto
-    // de línea, no se lo debe imprimir. Es mejor
-    // poner uno manualmente para evitar
-    // inconsistencias.
-    if (buffer_a_imprimir[str_len - 1] == '\n') {
-        buffer_a_imprimir[str_len - 1] = '\0';
-        str_len--;
-    }
-
-    printf("%s", buffer_a_imprimir);
-    putchar('\n');
-
-    for (int i = 0; i < str_len; i++) {
-        putchar('-');
-    }
-    putchar('\n');
 }
 
 static inline int _obtener_valor_aleatorio_arreglo(const int lim_inf,
