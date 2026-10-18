@@ -30,10 +30,6 @@ int main(void) {
     const int lim_inf = 0, lim_sup = 100;
     int prim_vec[vec_size], seg_vec[vec_size], result;
 
-    // Es posible que en plataformas distintas de Windows y Linux
-    // los arreglos cargados tengan exactamente los mismos valores,
-    // debido a que generar números aleatorios cuando se usa el
-    // tiempo como semilla no es el mejor método para dicho fin.
     cargar_vector_enteros_aleatorios(prim_vec, vec_size, lim_inf, lim_sup);
     cargar_vector_enteros_aleatorios(seg_vec, vec_size, lim_inf, lim_sup);
 
