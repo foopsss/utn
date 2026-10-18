@@ -17,9 +17,9 @@
 #endif
 
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #ifdef __linux__
     #include <sys/random.h>
@@ -28,49 +28,66 @@
 #endif
 // clang-format on
 
-static inline int _obtener_num_positivo_aleatorio(void) {
-    int num;
+static inline unsigned int _obtener_num_positivo_aleatorio(void) {
+    unsigned int num = 0;
 
     // clang-format off
     #ifdef _WIN32
-        rand_s(&num);
+        errno_t ret_val = rand_s(&num);
+
+        if (ret_val != 0) {
+            errno = ret_val;
+            perror("Error generando número aleatorio en Windows");
+            exit(EXIT_FAILURE);
+        }
     #elif __linux__
-        getrandom(&num, sizeof(num), 0);
+        ssize_t ret_val = getrandom(&num, sizeof(num), 0);
+
+        if (ret_val < 0) {
+            perror("Error generando número aleatorio en Linux");
+            exit(EXIT_FAILURE);
+        }
+
+        if ((size_t)ret_val < sizeof(num)) {
+            fprintf(stderr, "getrandom() no llenó el buffer de entrada.\n");
+            exit(EXIT_FAILURE);
+        }
     #else
-        srand(time(NULL));
+        static bool seeded = false;
+
+        if (!seeded) { 
+            srand(time(NULL));
+            seeded = true;
+        }
+
         num = rand();
     #endif
     // clang-format on
-
-    if (num < 0) {
-        // En caso de que se obtenga un número negativo
-        // se aplica una máscara binaria para obtener el
-        // valor absoluto del número.
-        //
-        // Esta máscara es un valor en hexadecimal donde
-        // todos los bits, salvo el más significativo,
-        // tienen valor 1, de manera que se conserva el
-        // valor de todos los bits correspondientes al
-        // valor de la variable "num", salvo el del bit
-        // del signo.
-        num = num & 0x7FFFFFFF;
-    }
 
     return num;
 }
 
 static inline int _obtener_valor_aleatorio_arreglo(const int lim_inf,
                                                    const int lim_sup) {
+    int num_pos = (int)_obtener_num_positivo_aleatorio();
+
+    // El cambio de tipo de num_pos a int puede hacer que se
+    // convierta en un número negativo si su bit más significativo
+    // es 1. Es necesario evitarlo para que luego la aplicación
+    // de la fórmula siguiente no genere valores que excedan el
+    // rango indicado en los parámetros.
+    if (num_pos < 0) {
+        num_pos = num_pos & 0x7FFFFFFF;
+    }
+
     // Explicación de la fórmula utilizada:
     // 1. (lim_sup - lim_inf + 1) determina la cantidad de números
     //    al azar que se pueden obtener.
-    // 2. _obtener_num_aleatorio() % (cant. posibles números) permite
-    //    obtener un número entre 0 y la cantidad de posibles números
-    //    a obtener.
+    // 2. num_pos % (cant. posibles números) permite obtener un
+    //    número entre 0 y la cantidad de posibles números a obtener.
     // 3. Al resultado del módulo se le suma el valor del límite
     //    inferior para que por lo menos sea igual a dicho número.
-    return (_obtener_num_positivo_aleatorio() % (lim_sup - lim_inf + 1)) +
-           lim_inf;
+    return (num_pos % (lim_sup - lim_inf + 1)) + lim_inf;
 }
 
 static inline void _verificar_tamanio_vector(const size_t vec_size) {
