@@ -9,14 +9,15 @@ int main(void) {
     const size_t vec_size = 100;
     const int lim_inf = -100, lim_sup = 100;
     int vec[vec_size];
+    char line_symbol = '=';
 
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
-    printf("Valores del arreglo: \n");
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo ordenado");
     ordenar_vector_enteros(vec, vec_size);
-    printf("Valores del arreglo ordenado: \n");
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 

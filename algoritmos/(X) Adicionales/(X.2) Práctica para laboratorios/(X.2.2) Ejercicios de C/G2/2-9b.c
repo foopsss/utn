@@ -13,11 +13,12 @@ int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 100;
     int vec[vec_size], may_num = INT_MIN, men_num = INT_MAX;
+    char line_symbol = '=';
     size_t prim_pos_may = 0, prim_pos_men = 0;
     double prom = 0;
 
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
-    printf("Valores del arreglo: \n");
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
@@ -39,6 +40,7 @@ int main(void) {
     printf("El número más grande en el arreglo es: %d\n", may_num);
     printf("El número más pequeño en el arreglo es: %d\n", men_num);
     printf("El promedio de los números en el arreglo es: %.2f\n", prom);
+
     printf("\n");
     printf(
         "El número más grande del arreglo se encuentra por primera vez en la "

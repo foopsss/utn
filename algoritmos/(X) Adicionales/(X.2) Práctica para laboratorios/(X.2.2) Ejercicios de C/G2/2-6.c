@@ -6,7 +6,7 @@ arreglo está ordenado y 0 (falso) en caso de no estarlo. */
 
 #include "../functions.h"
 
-int verificar_orden_arreglo(const int* arr, const size_t vec_size) {
+unsigned int verificar_orden_arreglo(const int* arr, const size_t vec_size) {
     for (size_t i = 1; i < vec_size; i++) {
         if (arr[i] < arr[i - 1]) {
             return 0;
@@ -15,7 +15,7 @@ int verificar_orden_arreglo(const int* arr, const size_t vec_size) {
     return 1;
 }
 
-void evaluar_resultado(const int result) {
+void evaluar_resultado(const unsigned int result) {
     if (result == 1) {
         printf("(el arreglo está ordenado)\n");
     } else {
@@ -26,21 +26,25 @@ void evaluar_resultado(const int result) {
 int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 100;
-    int vec[vec_size], result;
+    int vec[vec_size];
+    char line_symbol = '=';
+    unsigned int result;
 
+    imprimir_string_subrayado(line_symbol,
+                              "Arreglo generado por la computadora");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
-    printf("Arreglo generado por la computadora: \n");
     mostrar_vector_enteros(vec, vec_size);
 
     result = verificar_orden_arreglo(vec, vec_size);
     printf("\nEl resultado del análisis es: %d ", result);
     evaluar_resultado(result);
 
-    ordenar_vector_enteros(vec, vec_size);
-    result = verificar_orden_arreglo(vec, vec_size);
     printf("\n");
-    printf("Arreglo reordenado: \n");
+    imprimir_string_subrayado(line_symbol, "Arreglo reordenado");
+    ordenar_vector_enteros(vec, vec_size);
     mostrar_vector_enteros(vec, vec_size);
+
+    result = verificar_orden_arreglo(vec, vec_size);
     printf("\nEl resultado del análisis es: %d ", result);
     evaluar_resultado(result);
 

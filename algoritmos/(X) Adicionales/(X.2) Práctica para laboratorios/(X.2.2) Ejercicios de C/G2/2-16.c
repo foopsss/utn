@@ -9,11 +9,11 @@ mayor valor. */
 int main(void) {
     const size_t hor_size = 3, ver_size = 4;
     const int lim_inf = -100, lim_sup = 100;
-    size_t fila_mayor_valor = 0, columna_mayor_valor = 0;
     int mat[hor_size][ver_size], mayor_valor = INT_MIN;
+    char line_symbol = '=';
+    size_t fila_mayor_valor = 0, columna_mayor_valor = 0;
 
-    printf("Matriz de enteros cargada\n");
-    printf("=========================\n");
+    imprimir_string_subrayado(line_symbol, "Matriz de enteros cargada");
     cargar_matriz_enteros_aleatorios(hor_size, ver_size, mat, lim_inf,
                                      lim_sup);
     mostrar_matriz_enteros(hor_size, ver_size, mat);

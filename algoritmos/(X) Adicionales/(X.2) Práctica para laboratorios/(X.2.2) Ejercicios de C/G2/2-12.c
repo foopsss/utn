@@ -33,13 +33,14 @@ int main(void) {
     const size_t vec_size = 100;
     const int lim_inf = -100, lim_sup = 100;
     int vec[vec_size], val_us;
+    char line_symbol = '=';
 
-    printf("Arreglo original: \n");
+    imprimir_string_subrayado(line_symbol, "Arreglo original");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
-    printf("Arreglo ordenado: \n");
+    imprimir_string_subrayado(line_symbol, "Arreglo ordenado");
     ordenar_vector_enteros(vec, vec_size);
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");

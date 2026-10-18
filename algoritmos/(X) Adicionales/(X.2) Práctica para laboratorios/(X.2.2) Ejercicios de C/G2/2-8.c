@@ -50,18 +50,20 @@ int main(void) {
     const size_t vecA_size = 20, vecB_size = 5;
     const int start_valueA = 0, start_valueB = 9;
     int vecA[vecA_size], vecB[vecB_size];
+    char line_symbol = '=';
 
+    imprimir_string_subrayado(line_symbol, "Primer arreglo");
     cargar_vector_secuencial(vecA, vecA_size, start_valueA);
-    cargar_vector_secuencial(vecB, vecB_size, start_valueB);
-
-    printf("Primer arreglo: \n");
     mostrar_vector_enteros(vecA, vecA_size);
-    printf("\n");
-    printf("Segundo arreglo: \n");
-    mostrar_vector_enteros(vecB, vecB_size);
-    printf("\n");
 
+    printf("\n");
+    imprimir_string_subrayado(line_symbol, "Segundo arreglo");
+    cargar_vector_secuencial(vecB, vecB_size, start_valueB);
+    mostrar_vector_enteros(vecB, vecB_size);
+
+    printf("\n");
     int result = controlar_presencia_vector(vecA, vecA_size, vecB, vecB_size);
+
     if (result == -1) {
         printf("El segundo arreglo no se encuentra dentro del primero.");
     } else {

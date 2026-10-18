@@ -11,13 +11,14 @@ int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = -100, lim_sup = 100;
     int vec[vec_size], num_us, cant_coincidencias = 0;
+    char line_symbol = '=';
 
     printf("Introduzca un número a buscar en el arreglo: ");
     num_us = obtener_entero_usuario();
     printf("\n");
 
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
-    printf("Valores del arreglo: \n");
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 

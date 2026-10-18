@@ -8,10 +8,11 @@ pantalla. */
 int main(void) {
     const size_t vec_size = 10;
     int vec[vec_size];
+    char line_symbol = '=';
 
     cargar_vector_enteros_usuario(vec, vec_size);
     printf("\n");
-    printf("Valores del arreglo: \n");
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo");
     mostrar_vector_enteros(vec, vec_size);
 
     return 0;

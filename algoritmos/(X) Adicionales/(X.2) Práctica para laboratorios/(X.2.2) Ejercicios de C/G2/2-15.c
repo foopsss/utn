@@ -9,15 +9,14 @@ int main(void) {
     const size_t hor_size = 5, ver_size = 10;
     const int lim_inf = -100, lim_sup = 100;
     int mat[hor_size][ver_size], vec_suma_col[hor_size];
+    char line_symbol = '=';
 
-    printf("Matriz de enteros cargada\n");
-    printf("=========================\n");
+    imprimir_string_subrayado(line_symbol, "Matriz de enteros cargada");
     cargar_matriz_enteros_aleatorios(hor_size, ver_size, mat, lim_inf,
                                      lim_sup);
     mostrar_matriz_enteros(hor_size, ver_size, mat);
 
-    printf("Vector de suma de filas\n");
-    printf("=======================\n");
+    imprimir_string_subrayado(line_symbol, "Vector de suma de filas");
     for (size_t i = 0; i < hor_size; i++) {
         vec_suma_col[i] = 0;
 

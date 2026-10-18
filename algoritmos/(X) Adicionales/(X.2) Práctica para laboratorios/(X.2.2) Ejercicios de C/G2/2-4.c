@@ -16,14 +16,17 @@ int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 10;
     int vec_a[vec_size], vec_b[vec_size];
+    char line_symbol = '=';
 
+    imprimir_string_subrayado(line_symbol,
+                              "Valores del arreglo A (cargado por defecto)");
     cargar_vector_enteros_aleatorios(vec_a, vec_size, lim_inf, lim_sup);
-    copiar_arreglo(vec_b, vec_a, vec_size);
-
-    printf("Valores del arreglo A (cargado por defecto):\n");
     mostrar_vector_enteros(vec_a, vec_size);
+
     printf("\n");
-    printf("Valores del arreglo B (rellenado con los valores de A):\n");
+    imprimir_string_subrayado(
+        line_symbol, "Valores del arreglo B (rellenado con los valores de A)");
+    copiar_arreglo(vec_b, vec_a, vec_size);
     mostrar_vector_enteros(vec_b, vec_size);
 
     return 0;

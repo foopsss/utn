@@ -7,8 +7,9 @@ sean. */
 
 #include "../functions.h"
 
-int verificar_igualdad_arreglos(const int* prim_vec, const int* seg_vec,
-                                const size_t shared_vec_size) {
+unsigned int verificar_igualdad_arreglos(const int* prim_vec,
+                                         const int* seg_vec,
+                                         const size_t shared_vec_size) {
     for (size_t i = 0; i < shared_vec_size; i++) {
         if (prim_vec[i] != seg_vec[i]) {
             return 0;
@@ -17,7 +18,7 @@ int verificar_igualdad_arreglos(const int* prim_vec, const int* seg_vec,
     return 1;
 }
 
-void evaluar_resultado(const int result) {
+void evaluar_resultado(const unsigned int result) {
     if (result == 1) {
         printf("(los arreglos son iguales)\n");
     } else {
@@ -28,29 +29,37 @@ void evaluar_resultado(const int result) {
 int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 100;
-    int prim_vec[vec_size], seg_vec[vec_size], result;
+    int prim_vec[vec_size], seg_vec[vec_size];
+    char line_symbol = '=';
+    unsigned int result;
 
+    imprimir_string_subrayado(line_symbol,
+                              "Primer arreglo generado por la computadora");
     cargar_vector_enteros_aleatorios(prim_vec, vec_size, lim_inf, lim_sup);
-    cargar_vector_enteros_aleatorios(seg_vec, vec_size, lim_inf, lim_sup);
-
-    printf("Primer arreglo generado por la computadora: \n");
     mostrar_vector_enteros(prim_vec, vec_size);
-    printf("\nSegundo arreglo generado por la computadora: \n");
+
+    printf("\n");
+    imprimir_string_subrayado(line_symbol,
+                              "Segundo arreglo generado por la computadora");
+    cargar_vector_enteros_aleatorios(seg_vec, vec_size, lim_inf, lim_sup);
     mostrar_vector_enteros(seg_vec, vec_size);
 
     result = verificar_igualdad_arreglos(prim_vec, seg_vec, vec_size);
-    printf("\nEl resultado de la comparación es: %d ", result);
+    printf("\n");
+    printf("El resultado de la comparación es: %d ", result);
     evaluar_resultado(result);
 
     for (size_t i = 0; i < vec_size; i++) {
         seg_vec[i] = prim_vec[i];
     }
 
-    printf("\nRedefinición del segundo arreglo: \n");
+    printf("\n");
+    imprimir_string_subrayado(line_symbol, "Redefinición del segundo arreglo");
     mostrar_vector_enteros(seg_vec, vec_size);
 
     result = verificar_igualdad_arreglos(prim_vec, seg_vec, vec_size);
-    printf("\nEl resultado de la comparación es: %d ", result);
+    printf("\n");
+    printf("El resultado de la comparación es: %d ", result);
     evaluar_resultado(result);
 
     return 0;

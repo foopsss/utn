@@ -11,10 +11,11 @@ int main(void) {
     const size_t vec_size = 10;
     const int lim_inf = 0, lim_sup = 100;
     int vec[vec_size], may_num = INT_MIN, men_num = INT_MAX;
+    char line_symbol = '=';
     double prom = 0;
 
+    imprimir_string_subrayado(line_symbol, "Valores del arreglo");
     cargar_vector_enteros_aleatorios(vec, vec_size, lim_inf, lim_sup);
-    printf("Valores del arreglo: \n");
     mostrar_vector_enteros(vec, vec_size);
     printf("\n");
 
