@@ -22,6 +22,7 @@ Adjunto otros repositorios con resoluciones de la guía práctica, e incluso eje
 * [Repositorio de Leonardo David Brabo](https://github.com/LeonardoBrabo/Algoritmos_Resueltos).
 * [Repositorio de Orianna Fernandez](https://github.com/OriannaF/Parcial_AyED_UTN).
 * [Repositorio de Xiomara Solari](https://github.com/Xiomara-Solari/PARCIALES_AED).
+* [Repositorio de Tomás Benchat](https://github.com/tomasben/algoritmos).
 
 ## Otros repositorios de alumnos de UTN a nivel nacional
 También adjunto repositorios de otros alumnos de la UTN a nivel nacional. Téngase en cuenta que pueden no tener los mismos ejercicios que hicimos nosotros, pero vale la pena enlazar a ellos igual:
