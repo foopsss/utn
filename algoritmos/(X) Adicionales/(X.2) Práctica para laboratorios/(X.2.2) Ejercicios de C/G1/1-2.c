@@ -4,13 +4,15 @@ deben ser ingresados por el usuario. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main() {
     int x, y;
 
     printf("Ingrese un valor para X: ");
-    scanf("%d", &x);
+    x = obtener_entero_usuario();
     printf("Ingrese un valor para Y: ");
-    scanf("%d", &y);
+    y = obtener_entero_usuario();
 
     int suma = x + y;
     int resta = x - y;

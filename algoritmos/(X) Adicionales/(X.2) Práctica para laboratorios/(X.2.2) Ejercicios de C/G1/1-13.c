@@ -3,17 +3,19 @@ el más grande, cuál es el más pequeño y cuál se encuentra entre estos dos. 
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
-    int num_a, num_b, num_c, mas_gr, mas_peq, med;
+    int num_a, num_b, num_c, mas_gr = 0, mas_peq = 0, med = 0;
 
     printf("Introduzca un número A: ");
-    scanf("%d", &num_a);
+    num_a = obtener_entero_usuario();
 
     printf("Introduzca un número B: ");
-    scanf("%d", &num_b);
+    num_b = obtener_entero_usuario();
 
     printf("Introduzca un número C: ");
-    scanf("%d", &num_c);
+    num_c = obtener_entero_usuario();
 
     if (num_a == num_b && num_b == num_c) {
         printf("¡Los tres números coinciden!\n");

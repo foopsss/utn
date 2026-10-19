@@ -4,14 +4,16 @@ operación resta. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_a, num_b, div_ent = 0;
 
     printf("Introduzca un número A: ");
-    scanf("%d", &num_a);
+    num_a = obtener_entero_usuario();
 
     printf("Introduzca un número B: ");
-    scanf("%d", &num_b);
+    num_b = obtener_entero_usuario();
 
     while (num_a != 0 && num_a >= num_b) {
         div_ent += 1;

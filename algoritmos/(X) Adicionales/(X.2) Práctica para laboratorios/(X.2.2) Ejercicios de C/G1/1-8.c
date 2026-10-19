@@ -4,11 +4,13 @@ unidades, decenas y centenas. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_us, unidades, decenas, centenas;
 
-    printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    printf("Introduzca un número mayor o igual a 100 y menor a 1000: ");
+    num_us = obtener_entero_usuario();
 
     if (num_us >= 100 && num_us < 1000) {
         unidades = num_us % 10;
@@ -19,7 +21,7 @@ int main(void) {
         printf("%d decenas.\n", decenas);
         printf("%d centenas.\n", centenas);
     } else {
-        printf("Introduzca un número mayor o igual a 100 y menor que 1000.\n");
+        printf("Introduzca un número mayor o igual a 100 y menor a 1000.\n");
     }
 
     return 0;

@@ -4,11 +4,13 @@ ejemplo: 1234 imprime 4321. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_us, inv = 0;
 
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
 
     while (num_us != 0) {
         inv = inv * 10;

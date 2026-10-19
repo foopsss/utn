@@ -3,11 +3,13 @@ es palíndromo cuando es igual a su inverso. Ejemplo: 3223. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_us, copia, inv = 0;
 
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
     copia = num_us;
 
     while (copia != 0) {

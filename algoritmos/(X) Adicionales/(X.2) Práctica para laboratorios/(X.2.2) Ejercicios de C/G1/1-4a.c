@@ -2,11 +2,13 @@
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_us;
 
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
 
     if (num_us % 2 == 0) {
         printf("El número es par.\n");

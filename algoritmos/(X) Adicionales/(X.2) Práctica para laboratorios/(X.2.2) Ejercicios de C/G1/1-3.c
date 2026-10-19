@@ -4,6 +4,8 @@ deben ser ingresados por el usuario, así como la operación a realizar. */
 
 #include <stdio.h>
 
+#include "../functions.h"
+
 void op_suma(const int a, const int b) {
     int suma = a + b;
     printf("Resultado de la suma: %d\n", suma);
@@ -42,11 +44,11 @@ int main() {
 
     printf("\n");
     printf("Introduzca su elección: ");
-    scanf("%d", &eleccion);
+    eleccion = obtener_entero_usuario();
     printf("Ingrese un valor para X: ");
-    scanf("%d", &x);
+    x = obtener_entero_usuario();
     printf("Ingrese un valor para Y: ");
-    scanf("%d", &y);
+    y = obtener_entero_usuario();
 
     printf("\n");
     switch (eleccion) {

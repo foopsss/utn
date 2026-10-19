@@ -3,12 +3,13 @@ sus dígitos. */
 
 #include <stdio.h>
 
-int main(void) {
-    int num_us, suma_dig;
+#include "../functions.h"
 
-    suma_dig = 0;
+int main(void) {
+    int num_us, suma_dig = 0;
+
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
 
     while (num_us != 0) {
         suma_dig += num_us % 10;

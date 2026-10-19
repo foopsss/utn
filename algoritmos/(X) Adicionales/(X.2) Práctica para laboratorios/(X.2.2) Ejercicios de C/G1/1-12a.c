@@ -3,12 +3,14 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "../functions.h"
+
 int main(void) {
     int num_us;
     bool es_primo = true;
 
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
 
     for (int i = 2; i <= (num_us - 1); i++) {
         if (num_us % i == 0) {
