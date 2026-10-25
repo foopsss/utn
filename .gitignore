@@ -14,3 +14,8 @@
 
 # Regla para ignorar ejecutables de Windows compilados con MinGW.
 *.exe
+
+# Regla para ignorar archivos de caché de Python y sus carpetas.
+__pycache__/
+*.pyc
+*.pyo
