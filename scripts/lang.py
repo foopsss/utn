@@ -6,10 +6,7 @@ import sys
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-
-def draw_line() -> None:
-    line = "=" * 100
-    print(line)
+from _utils import draw_line, get_repo_root
 
 
 class AbstractBackend(ABC):
@@ -126,7 +123,7 @@ language_backends = {
 }
 
 
-if __name__ == "__main__":
+def parse_cli_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Permite compilar y ejecutar código escrito en Pascal y"
         " en C, así como limpiar los archivos resultantes del proceso de"
@@ -176,14 +173,18 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
     if args.remove and args.debug:
         parser.error(
             "Los parámetros --remove y --debug no se pueden utilizar juntos."
         )
         sys.exit(1)
 
-    cwd = Path(".")
+    return args
+
+
+def main() -> None:
+    args = parse_cli_arguments()
+    cwd = get_repo_root()
     matches = list(cwd.rglob(args.file))
 
     if len(matches) == 0:
@@ -242,3 +243,7 @@ if __name__ == "__main__":
             lang_file.execute()
         elif args.remove:
             lang_file.remove_files()
+
+
+if __name__ == "__main__":
+    main()
