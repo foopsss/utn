@@ -5,6 +5,8 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+#include "../functions.h"
+
 bool es_perfecto(int num, int divisor, int suma_div) {
     if (divisor != 0) {
         if (num % divisor == 0) {
@@ -29,7 +31,7 @@ int main() {
     int num_us;
 
     printf("Introduzca un número: ");
-    scanf("%d", &num_us);
+    num_us = obtener_entero_usuario();
 
     if (es_perfecto(num_us, num_us - 1, 0)) {
         printf("¡El número es perfecto!\n");
