@@ -6,5 +6,10 @@ En este repositorio almaceno ejercicios hechos durante el cursado de distintas m
 
 Las carpetas de cada materia incluyen de ser necesario sus propios README con más detalles. De ser posible, para cada materia comparto enlaces a resoluciones de ejercicios de otros compañeros de la carrera.
 
+# Uso de git hooks
+Este repositorio usa los git hooks que se encuentran disponibles en la carpeta "git-hooks", ubicados ahí con la finalidad de poder versionarlos fácilmente. Como esta ubicación no es la estándar, se deberá ejecutar el siguiente comando en caso de querer utilizar los git hooks disponibles al trabajar en el repositorio:
+
+`git config core.hooksPath git-hooks/`
+
 # Licencia
 Todos los ejercicios disponibles en este repositorio están ofrecidos bajo la licencia GNU General Public License v3.0 o GPL-3.0.
