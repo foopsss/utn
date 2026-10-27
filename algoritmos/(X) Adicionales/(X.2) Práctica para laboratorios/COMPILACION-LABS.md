@@ -6,7 +6,7 @@ Este documento explica como compilar los ejercicios que hice de las guías de pr
 * __C__: los ejercicios pueden ser compilados tanto en Linux como en Windows con una simple invocación al compilador: `gcc <nombre del archivo>.c -o <nombre del archivo>`.
 
 ## Compilación utilizando lang.py
-```lang.py``` es un «pequeño» script multiplataforma de Python que sirve para automatizar la compilación y ejecución de los programas, así como la remoción de los ejecutables generados y cualquier otro archivo residual que pudiera llegar a quedar tras el proceso de compilación. Cuenta con los siguientes parámetros:
+```lang.py``` es un «pequeño» script multiplataforma de Python que sirve para automatizar la compilación y ejecución de los programas, así como la remoción de los ejecutables generados y cualquier otro archivo residual que pudiera llegar a quedar tras el proceso de compilación. Es uno de los scripts disponible en la carpeta "scripts/" en la raiz del repositorio, y debe ejecutarse desde ahi. Cuenta con los siguientes parámetros:
 
 * ```-c```/```--compile```: indica que solo se desea compilar un ejercicio dado.
 * ```-e```/```--execute```: indica que se desea compilar y ejecutar un ejercicio dado.
