@@ -6,7 +6,7 @@ import sys
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from _utils import draw_line, get_repo_root
+from _utils import check_if_tools_installed, draw_line, get_repo_root
 
 
 class AbstractBackend(ABC):
@@ -57,6 +57,7 @@ class AbstractBackend(ABC):
 
 class PascalBackend(AbstractBackend):
     def compile(self):
+        check_if_tools_installed(["fpc"])
         command = ["fpc", f"{self.filename}.pas"]
 
         if self.debug_build:
@@ -92,6 +93,7 @@ class PascalBackend(AbstractBackend):
 
 class CBackend(AbstractBackend):
     def compile(self):
+        check_if_tools_installed(["gcc"])
         command = [
             "gcc",
             "-std=c23",
@@ -183,6 +185,7 @@ def parse_cli_arguments() -> argparse.Namespace:
 
 
 def main() -> None:
+    check_if_tools_installed(["git"])
     args = parse_cli_arguments()
     cwd = get_repo_root()
     matches = list(cwd.rglob(args.file))
@@ -230,6 +233,9 @@ def main() -> None:
         filename_stem = matches[0].stem
         file_parent_path = str(matches[0].parent.absolute())
         is_debug_build = bool(args.debug)
+
+        if is_debug_build:
+            check_if_tools_installed(["gdb"])
 
         lang_file = available_backend(
             filename=filename_stem,

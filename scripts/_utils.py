@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 import sys
 
@@ -7,6 +8,15 @@ from pathlib import Path
 def draw_line() -> None:
     line = "=" * 100
     print(line)
+
+
+def check_if_tools_installed(tools: list[str]) -> None:
+    for tool in tools:
+        if not shutil.which(tool):
+            raise RuntimeError(
+                f"{tool} no está instalado en el sistema, o no se encuentra"
+                " añadido a la variable de entorno PATH."
+            )
 
 
 def get_repo_root() -> Path:

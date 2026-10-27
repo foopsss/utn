@@ -1,11 +1,10 @@
 import argparse
-import shutil
 import subprocess
 import sys
 
 from pathlib import Path
 
-from _utils import get_repo_root
+from _utils import check_if_tools_installed, get_repo_root
 
 formatters = {
     "black": ["black"],
@@ -17,15 +16,6 @@ extension_associations = {
     ".h": "clang-format",
     ".py": "black",
 }
-
-
-def check_if_tools_installed() -> None:
-    for tool in ["git"] + list(formatters.keys()):
-        if not shutil.which(tool):
-            raise RuntimeError(
-                f"{tool} no está instalado en el sistema, o no se encuentra"
-                " añadido a la variable de entorno PATH."
-            )
 
 
 def parse_cli_arguments() -> argparse.Namespace:
@@ -99,7 +89,7 @@ def fetch_change_list(repo_root: Path) -> list[Path]:
 
 
 def main() -> None:
-    check_if_tools_installed()
+    check_if_tools_installed(["git"] + list(formatters.keys()))
     cli_args = parse_cli_arguments()
 
     # "format.py" reside en "scripts/", así que es
