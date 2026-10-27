@@ -7,6 +7,9 @@
 # Regla para no ignorar directorios/carpetas.
 !*/
 
+# Regla para no ignorar los git hooks.
+!git-hooks/pre-commit
+
 # Regla para ignorar object files y unit files resultantes de compilar cosas
 # con Free Pascal.
 *.o

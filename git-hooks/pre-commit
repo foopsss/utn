@@ -1,0 +1,21 @@
+#!/bin/sh
+echo "Ejecutando formateadores de código..."
+
+PY_CMD="python"
+command -v python3 >/dev/null 2>&1 && PY_CMD="python3"
+
+# Capture unstaged changes before formatting.
+BEFORE_DIFF=$(git diff)
+
+# Run your custom formatter.
+$PY_CMD scripts/format.py -c
+
+# Capture unstaged changes after formatting.
+AFTER_DIFF=$(git diff)
+
+# Abort if the formatter modified the working directory.
+if [ "$BEFORE_DIFF" != "$AFTER_DIFF" ]; then
+    echo "Hubo archivos que fueron modificados. Por favor, revise los"
+    echo "archivos modificados y realice el commit nuevamente."
+    exit 1
+fi
