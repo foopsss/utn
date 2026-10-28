@@ -21,18 +21,16 @@ bool cumple_patron(long int entrada) {
         } else {
             return true;
         }
-    }
-
-    if (entrada % 100 != entrada) {
+    } else {
         if (entrada % 100 != 10) {
             return false;
         } else {
-            cumple_patron(entrada / 100);
+            return cumple_patron(entrada / 100);
         }
     }
 }
 
-int main() {
+int main(void) {
     // Combinaciones que se pueden probar
     // para ver si la función falla:
     // (*) 1110101010.

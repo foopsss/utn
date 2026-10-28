@@ -10,16 +10,16 @@
 bool es_perfecto(int num, int divisor, int suma_div) {
     if (divisor != 0) {
         if (num % divisor == 0) {
-            es_perfecto(num, divisor - 1, suma_div + divisor);
+            return es_perfecto(num, divisor - 1, suma_div + divisor);
         } else {
-            es_perfecto(num, divisor - 1, suma_div);
+            return es_perfecto(num, divisor - 1, suma_div);
         }
     } else {
         // Descomentar esto si se quiere ver
         // qué hace la función.
         // printf("suma_div: %d\n", suma_div);
 
-        if (suma_div % num == 0) {
+        if (suma_div == num) {
             return true;
         } else {
             return false;
@@ -27,11 +27,17 @@ bool es_perfecto(int num, int divisor, int suma_div) {
     }
 }
 
-int main() {
+int main(void) {
     int num_us;
 
     printf("Introduzca un número: ");
     num_us = obtener_entero_usuario();
+
+    while (num_us <= 0) {
+        printf("Los números perfectos solo pueden ser enteros positivos.\n");
+        printf("Introduzca un número positivo: ");
+        num_us = obtener_entero_usuario();
+    }
 
     if (es_perfecto(num_us, num_us - 1, 0)) {
         printf("¡El número es perfecto!\n");

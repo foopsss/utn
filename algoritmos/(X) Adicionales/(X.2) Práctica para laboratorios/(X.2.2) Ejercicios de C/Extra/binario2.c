@@ -16,6 +16,9 @@ bool cumple_patron(long int entrada, int cant_cero) {
             cant_cero += 1;
         }
 
+        // La consigna no especifica si debe haber al menos un bloque
+        // de ceros. En caso de considerarse esa salvedad, pondría lo
+        // siguiente: "if (cant_cero > 0 && cant_cero % 3 == 0)".
         if (cant_cero % 3 == 0) {
             return true;
         } else {
@@ -23,16 +26,16 @@ bool cumple_patron(long int entrada, int cant_cero) {
         }
     } else {
         if (entrada % 10 == 0) {
-            cumple_patron(entrada / 10, cant_cero + 1);
+            return cumple_patron(entrada / 10, cant_cero + 1);
         } else {
-            cumple_patron(entrada / 10, cant_cero);
+            return cumple_patron(entrada / 10, cant_cero);
         }
     }
 }
 
-int main() {
+int main(void) {
     long int numero = 10101010;
-    long int numero2 = 1011011100;
+    long int numero2 = 101101110;
 
     if (cumple_patron(numero, 0)) {
         printf(
