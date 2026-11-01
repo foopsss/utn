@@ -14,11 +14,11 @@ typedef struct Nodo {
     struct Nodo* prox;
 } Nodo;
 
-Nodo* crear_nodo(int num) {
+Nodo* crear_nodo(const int num) {
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
 
     if (nuevo == NULL) {
-        fprintf(stderr, "No se pudo reservar memoria para un nodo.");
+        fprintf(stderr, "No se pudo reservar memoria para un nodo.\n");
         exit(EXIT_FAILURE);
     }
 
