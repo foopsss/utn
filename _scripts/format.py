@@ -92,7 +92,7 @@ def main() -> None:
     check_if_tools_installed(["git"] + list(formatters.keys()))
     cli_args = parse_cli_arguments()
 
-    # "format.py" reside en "scripts/", así que es
+    # "format.py" reside en "_scripts/", así que es
     # necesario encontrar la raíz del repositorio.
     repo_root = get_repo_root()
 
