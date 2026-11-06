@@ -8,7 +8,7 @@
 !*/
 
 # Regla para no ignorar los git hooks.
-!git-hooks/pre-commit
+!_git-hooks/pre-commit
 
 # Regla para ignorar object files y unit files resultantes de compilar cosas
 # con Free Pascal.
